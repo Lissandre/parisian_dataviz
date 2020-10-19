@@ -1,7 +1,7 @@
 {
-  "name": "three_boilerplate",
+  "name": "parisian_dataviz",
   "version": "1.0.0",
-  "description": "Three boilerplate",
+  "description": "Parisian Dataviz",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -48,10 +48,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lissandre/three-template.git"
+    "url": "git+https://github.com/Lissandre/parisian_dataviz.git"
   },
-  "bugs": {
-    "url": "https://github.com/Lissandre/three-template/issues"
-  },
-  "homepage": "https://github.com/Lissandre/three-template#readme"
+  "homepage": "https://github.com/Lissandre/parisian_dataviz#readme"
 }

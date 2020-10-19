@@ -1,4 +1,4 @@
-# THREE.js TEMPLATE
+# Parisian Dataviz
 
 ## Features
 - eslint
@@ -27,6 +27,3 @@ Build the current application
 ```sh
 $ npm run build
 ```
-
-## Debug
-Go to your-url/#debug

@@ -11,6 +11,7 @@ export default class App {
   constructor(_options) {
     // Set options
     this.canvas = _options.canvas
+    this.config = _options.config
 
     // Set up
     this.time = new Time()
@@ -67,7 +68,7 @@ export default class App {
     this.scene.add(this.world.container)
   }
   setConfig() {
-    if (window.location.hash === '#debug') {
+    if (window.location.hash === '#debug' || this.config === 'dev') {
       this.debug = new dat.GUI({ width: 420 })
     }
   }
