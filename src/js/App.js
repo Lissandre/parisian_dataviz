@@ -3,6 +3,7 @@ import * as dat from 'dat.gui'
 
 import Sizes from './Tools/Sizes.js'
 import Time from './Tools/Time.js'
+import Mouse from './Tools/Mouse.js'
 
 import Camera from './Camera.js'
 import World from './World/index.js'
@@ -16,6 +17,7 @@ export default class App {
     // Set up
     this.time = new Time()
     this.sizes = new Sizes()
+    this.mouse = new Mouse()
 
     this.setConfig()
     this.setRenderer()
@@ -63,6 +65,7 @@ export default class App {
     this.world = new World({
       time: this.time,
       debug: this.debug,
+      mouse: this.mouse,
     })
     // Add world to scene
     this.scene.add(this.world.container)

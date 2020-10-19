@@ -4,6 +4,7 @@ export default class Cube {
   constructor(_options) {
     // Options
     this.time = _options.time
+    this.mouse = _options.mouse
     this.debug = _options.debug
 
     // Set up
@@ -29,13 +30,18 @@ export default class Cube {
         wireframe: false,
       })
     )
+    this.cube.position.y = 2
     this.container.add(this.cube)
   }
   setMovement() {
-    this.time.on('tick', () => {
-      this.cube.rotation.x += 0.03
-      this.cube.rotation.y += 0.01
-      this.cube.rotation.z += 0.02
+    // this.time.on('tick', () => {
+    //   this.cube.rotation.x += 0.03
+    //   this.cube.rotation.y += 0.01
+    //   this.cube.rotation.z += 0.02
+    // })
+    this.mouse.on('mousemove', ()=>{
+      this.cube.rotation.y += 0.001 * this.mouse.delta.x
+      this.cube.rotation.x += 0.001 * this.mouse.delta.y
     })
   }
   setDebug() {
