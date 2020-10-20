@@ -10,7 +10,7 @@ export default class PointLight {
     this.params = {
       color: 0xaaaaaa,
       positionX: 0,
-      positionY: 1,
+      positionY: 2,
       positionZ: 5,
     }
 
@@ -21,7 +21,7 @@ export default class PointLight {
     }
   }
   createPointLight() {
-    this.light = new THREE.SpotLight(this.params.color)
+    this.light = new THREE.PointLight(this.params.color, 1, 15)
     this.light.castShadow = true
     this.light.position.set(
       this.params.positionX,

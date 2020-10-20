@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export default class Background {
+export default class Floor {
   constructor(_options) {
     // Set options
     this.debug = _options.debug
@@ -15,7 +15,7 @@ export default class Background {
     this.setDebug()
   }
   setFloor() {
-    this.background = new THREE.Mesh(
+    this.floor = new THREE.Mesh(
       new THREE.PlaneBufferGeometry(50, 20, 10),
       new THREE.MeshStandardMaterial({
         color: this.params.color,
@@ -24,18 +24,18 @@ export default class Background {
         wireframe: false,
       })
     )
-    this.background.position.z = -12
-    this.container.add(this.background)
+    this.floor.rotation.x = - Math.PI / 2
+    this.container.add(this.floor)
   }
   setDebug() {
-    this.debugFolder = this.debug.addFolder('Background')
+    this.debugFolder = this.debug.addFolder('Floor')
     this.debugFolder.open()
 
     this.debugFolder
       .addColor(this.params, 'color')
       .name('Color')
       .onChange(() => {
-        this.background.material.color = new THREE.Color(this.params.color)
+        this.floor.material.color = new THREE.Color(this.params.color)
       })
   }
 }

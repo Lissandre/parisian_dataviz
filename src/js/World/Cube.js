@@ -9,6 +9,9 @@ export default class Cube {
 
     // Set up
     this.container = new THREE.Object3D()
+    this.rotation = 0
+    this.speed = 0
+    this.deceleration = 0.05
     this.params = {
       color: 0xfafafa,
     }
@@ -30,29 +33,32 @@ export default class Cube {
         wireframe: false,
       })
     )
-    this.cube.position.y = 0
+    this.cube.position.y = 2
     this.container.add(this.cube)
   }
   setMovement() {
-    this.mouse.on('mousemove', () => {
+    this.time.on('tick', ()=>{
       if (this.mouse.grab === true) {
-        this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
-          new THREE.Euler(
-            this.toRadians(this.mouse.delta.y * 0.1),
-            this.toRadians(this.mouse.delta.x * 0.1),
-            0,
-            'XYZ'
-          )
-        )
-        this.container.quaternion.multiplyQuaternions(
-          this.deltaRotationQuaternion,
-          this.container.quaternion
-        )
+        this.speed = 0
+        this.speed = this.mouse.delta.x * 0.1
+      } else if (this.mouse.grab === false && Math.abs(this.speed) > 0) {
+        Math.sign(this.speed)*this.speed - this.deceleration > 0 ? this.speed -= Math.sign(this.speed)*this.deceleration : this.speed = 0
       }
+      console.log(this.speed)
+      this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
+        new THREE.Euler(
+          // this.toRadians(this.mouse.delta.y * 0.1),
+          0,
+          this.toRadians(this.speed),
+          0,
+          'XYZ'
+        )
+      )
+      this.container.quaternion.multiplyQuaternions(
+        this.deltaRotationQuaternion,
+        this.container.quaternion
+      )
     })
-  }
-  toRadians(angle) {
-    return angle * (Math.PI / 180)
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Cube')
@@ -77,5 +83,8 @@ export default class Cube {
       .onChange(() => {
         this.cube.material.color = new THREE.Color(this.params.color)
       })
+  }
+  toRadians(angle) {
+    return angle * (Math.PI / 180)
   }
 }

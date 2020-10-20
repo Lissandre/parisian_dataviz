@@ -4,6 +4,7 @@ import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
 import Cube from './Cube.js'
 import Background from './Background.js'
+import Floor from './Floor.js'
 
 export default class World {
   constructor(_options) {
@@ -24,6 +25,7 @@ export default class World {
     this.setPointLight()
     this.setCube()
     this.setBackground()
+    this.setFloor()
   }
   setAmbientLight() {
     this.light = new AmbientLight({
@@ -50,5 +52,11 @@ export default class World {
       debug: this.debug,
     })
     this.container.add(this.background.container)
+  }
+  setFloor() {
+    this.floor = new Floor({
+      debug: this.debug,
+    })
+    this.container.add(this.floor.container)
   }
 }
