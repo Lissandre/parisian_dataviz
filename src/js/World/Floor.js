@@ -4,15 +4,12 @@ export default class Floor {
   constructor(_options) {
     // Set options
     this.debug = _options.debug
+    this.params = _options.params
 
     // Set up
     this.container = new THREE.Object3D()
-    this.params = {
-      color: 0x9f94ff,
-    }
 
     this.setFloor()
-    this.setDebug()
   }
   setFloor() {
     this.floor = new THREE.Mesh(
@@ -26,16 +23,5 @@ export default class Floor {
     )
     this.floor.rotation.x = - Math.PI / 2
     this.container.add(this.floor)
-  }
-  setDebug() {
-    this.debugFolder = this.debug.addFolder('Floor')
-    this.debugFolder.open()
-
-    this.debugFolder
-      .addColor(this.params, 'color')
-      .name('Color')
-      .onChange(() => {
-        this.floor.material.color = new THREE.Color(this.params.color)
-      })
   }
 }

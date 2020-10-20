@@ -4,15 +4,12 @@ export default class Background {
   constructor(_options) {
     // Set options
     this.debug = _options.debug
+    this.params = _options.params
 
     // Set up
     this.container = new THREE.Object3D()
-    this.params = {
-      color: 0x9f94ff,
-    }
 
     this.setFloor()
-    this.setDebug()
   }
   setFloor() {
     this.background = new THREE.Mesh(
@@ -26,16 +23,5 @@ export default class Background {
     )
     this.background.position.z = -12
     this.container.add(this.background)
-  }
-  setDebug() {
-    this.debugFolder = this.debug.addFolder('Background')
-    this.debugFolder.open()
-
-    this.debugFolder
-      .addColor(this.params, 'color')
-      .name('Color')
-      .onChange(() => {
-        this.background.material.color = new THREE.Color(this.params.color)
-      })
   }
 }

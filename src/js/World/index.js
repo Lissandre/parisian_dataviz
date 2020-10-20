@@ -1,8 +1,7 @@
 import * as THREE from 'three'
 
 import AmbientLight from './AmbientLight.js'
-import PointLight from './PointLight.js'
-import Cube from './Cube.js'
+import PointLights from './PointLights.js'
 import Human from './Human.js'
 import Background from './Background.js'
 import Floor from './Floor.js'
@@ -16,6 +15,9 @@ export default class World {
 
     // Set up
     this.container = new THREE.Object3D()
+    this.params = {
+      color: 0xffffff
+    }
 
     if (this.debug) {
       this.debugFolder = this.debug.addFolder('World')
@@ -23,11 +25,11 @@ export default class World {
     }
 
     this.setAmbientLight()
-    this.setPointLight()
-    // this.setCube()
+    this.setPointLights()
     this.setBackground()
     this.setFloor()
     this.setHuman()
+    this.setDebug()
   }
   setAmbientLight() {
     this.light = new AmbientLight({
@@ -35,19 +37,11 @@ export default class World {
     })
     this.container.add(this.light.container)
   }
-  setPointLight() {
-    this.light = new PointLight({
+  setPointLights() {
+    this.lights = new PointLights({
       debug: this.debugFolder,
     })
-    this.container.add(this.light.container)
-  }
-  setCube() {
-    this.cube = new Cube({
-      time: this.time,
-      mouse: this.mouse,
-      debug: this.debugFolder,
-    })
-    this.container.add(this.cube.container)
+    this.container.add(this.lights.container)
   }
   setHuman() {
     this.human = new Human({
@@ -58,14 +52,29 @@ export default class World {
   }
   setBackground() {
     this.background = new Background({
+      params: this.params,
       debug: this.debug,
     })
     this.container.add(this.background.container)
   }
   setFloor() {
     this.floor = new Floor({
+      params: this.params,
       debug: this.debug,
     })
     this.container.add(this.floor.container)
+  }
+  setDebug() {
+    this.debugFolder = this.debug.addFolder('Background')
+    this.debugFolder.open()
+
+    this.debugFolder
+      .addColor(this.params, 'color')
+      .name('Color')
+      .onChange(() => {
+        console.log(this.floor.container)
+        this.floor.container.children[0].material.color = new THREE.Color(this.params.color)
+        this.background.container.children[0].material.color = new THREE.Color(this.params.color)
+      })
   }
 }
