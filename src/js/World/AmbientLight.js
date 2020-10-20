@@ -7,7 +7,7 @@ export default class AmbientLight {
 
     // Set up
     this.container = new THREE.Object3D()
-    this.params = { color: 0x555555 }
+    this.params = { color: 0xffffff }
 
     this.createAmbientLight()
 
@@ -17,6 +17,7 @@ export default class AmbientLight {
   }
   createAmbientLight() {
     this.light = new THREE.AmbientLight(this.params.color)
+    this.light.intensity = 0.3
     this.container.add(this.light)
   }
   setDebug() {

@@ -27,14 +27,16 @@ export default class App {
   setRenderer() {
     // Set scene
     this.scene = new THREE.Scene()
+    this.scene.fog = new THREE.Fog(0xffffff, 5, 15);
     // Set renderer
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
       antialiasing: true,
     })
+    this.renderer.shadowMap.enabled = true
     // Set background color
-    this.renderer.setClearColor(0x212121, 1)
+    this.renderer.setClearColor(0xffffff, 1)
     // Set renderer pixel ratio & sizes
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
@@ -64,8 +66,12 @@ export default class App {
     // Create world instance
     this.world = new World({
       time: this.time,
+      sizes: this.sizes,
+      camera: this.camera.container,
       debug: this.debug,
       mouse: this.mouse,
+      fog: this.scene.fog,
+      renderer: this.renderer,
     })
     // Add world to scene
     this.scene.add(this.world.container)

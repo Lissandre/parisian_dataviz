@@ -10,7 +10,7 @@ export default class PointLights {
     this.params = {
       colorRight: 0xffffff,
       colorLeft: 0xffffff,
-      positionX: 5,
+      positionX: 4,
       positionY: 2,
       positionZ: 5,
     }
@@ -55,24 +55,36 @@ export default class PointLights {
       .onChange(() => {
         this.lightLeft.color = new THREE.Color(this.params.colorLeft)
       })
-    //Position debug
-    // this.debugFolder
-    //   .add(this.light.position, 'x')
-    //   .step(0.1)
-    //   .min(-5)
-    //   .max(5)
-    //   .name('Position X')
-    // this.debugFolder
-    //   .add(this.light.position, 'y')
-    //   .step(0.1)
-    //   .min(-5)
-    //   .max(5)
-    //   .name('Position Y')
-    // this.debugFolder
-    //   .add(this.light.position, 'z')
-    //   .step(0.1)
-    //   .min(-5)
-    //   .max(5)
-    //   .name('Position Z')
+    // Position debug
+    this.debugFolder
+      .add(this.params, 'positionX')
+      .step(0.1)
+      .min(-10)
+      .max(10)
+      .name('Position X')
+      .onChange(() => {
+        this.lightLeft.position.x = -this.params.positionX
+        this.lightRight.position.x = this.params.positionX
+      })
+    this.debugFolder
+      .add(this.params, 'positionY')
+      .step(0.1)
+      .min(-10)
+      .max(10)
+      .name('Position Y')
+      .onChange(() => {
+        this.lightLeft.position.y = this.params.positionY
+        this.lightRight.position.y = this.params.positionY
+      })
+    this.debugFolder
+      .add(this.params, 'positionZ')
+      .step(0.1)
+      .min(-10)
+      .max(10)
+      .name('Position Z')
+      .onChange(() => {
+        this.lightLeft.position.z = this.params.positionZ
+        this.lightRight.position.z = this.params.positionZ
+      })
   }
 }

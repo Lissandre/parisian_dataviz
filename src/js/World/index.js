@@ -10,13 +10,17 @@ export default class World {
   constructor(_options) {
     // Set options
     this.time = _options.time
+    this.sizes = _options.sizes
     this.debug = _options.debug
     this.mouse = _options.mouse
+    this.camera = _options.camera
+    this.fog = _options.fog
+    this.renderer = _options.renderer
 
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      color: 0xffffff
+      color: 0xffffff,
     }
 
     if (this.debug) {
@@ -26,7 +30,7 @@ export default class World {
 
     this.setAmbientLight()
     this.setPointLights()
-    this.setBackground()
+    // this.setBackground()
     this.setFloor()
     this.setHuman()
     this.setDebug()
@@ -46,7 +50,9 @@ export default class World {
   setHuman() {
     this.human = new Human({
       time: this.time,
+      sizes: this.sizes,
       mouse: this.mouse,
+      camera: this.camera
     })
     this.container.add(this.human.container)
   }
@@ -72,9 +78,18 @@ export default class World {
       .addColor(this.params, 'color')
       .name('Color')
       .onChange(() => {
-        console.log(this.floor.container)
-        this.floor.container.children[0].material.color = new THREE.Color(this.params.color)
-        this.background.container.children[0].material.color = new THREE.Color(this.params.color)
+        this.floor.container.children[0].material.color = new THREE.Color(
+          this.params.color
+        )
+        // this.background.container.children[0].material.color = new THREE.Color(
+        //   this.params.color
+        // )
+        // this.fog.color = new THREE.Color(
+        //   this.params.color
+        // )
+        // this.renderer.setClearColor(new THREE.Color(
+        //   this.params.color
+        // ))
       })
   }
 }

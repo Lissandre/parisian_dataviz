@@ -42,14 +42,14 @@ export default class Camera {
     this.camera.position.z = 5
   }
   setOrbitControls() {
-      // Set orbit control
-      this.orbitControls = new OrbitControls(
-        this.camera,
-        this.renderer.domElement
-      )
-      this.orbitControls.enabled = true
-      this.orbitControls.enableKeys = true
-      this.orbitControls.zoomSpeed = 1
+    // Set orbit control
+    this.orbitControls = new OrbitControls(
+      this.camera,
+      this.renderer.domElement
+    )
+    this.orbitControls.enabled = true
+    this.orbitControls.enableKeys = true
+    this.orbitControls.zoomSpeed = 1
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Camera')

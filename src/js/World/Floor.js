@@ -13,7 +13,7 @@ export default class Floor {
   }
   setFloor() {
     this.floor = new THREE.Mesh(
-      new THREE.PlaneBufferGeometry(50, 20, 10),
+      new THREE.PlaneBufferGeometry(50, 20),
       new THREE.MeshStandardMaterial({
         color: this.params.color,
         metalness: 0.3,
@@ -21,7 +21,8 @@ export default class Floor {
         wireframe: false,
       })
     )
-    this.floor.rotation.x = - Math.PI / 2
+    this.floor.receiveShadow = true
+    this.floor.rotation.x = -Math.PI / 2
     this.container.add(this.floor)
   }
 }
