@@ -44,7 +44,6 @@ export default class Cube {
       } else if (this.mouse.grab === false && Math.abs(this.speed) > 0) {
         Math.sign(this.speed)*this.speed - this.deceleration > 0 ? this.speed -= Math.sign(this.speed)*this.deceleration : this.speed = 0
       }
-      console.log(this.speed)
       this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
         new THREE.Euler(
           // this.toRadians(this.mouse.delta.y * 0.1),
