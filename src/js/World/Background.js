@@ -24,7 +24,7 @@ export default class Background {
         wireframe: false,
       })
     )
-    this.floor.rotation.x = Math.PI/2
+    this.floor.rotation.x = Math.PI / 2
     this.container.add(this.floor)
   }
   setDebug() {

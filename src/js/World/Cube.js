@@ -30,19 +30,29 @@ export default class Cube {
         wireframe: false,
       })
     )
-    this.cube.position.y = 2
+    this.cube.position.y = 0
     this.container.add(this.cube)
   }
   setMovement() {
-    // this.time.on('tick', () => {
-    //   this.cube.rotation.x += 0.03
-    //   this.cube.rotation.y += 0.01
-    //   this.cube.rotation.z += 0.02
-    // })
-    this.mouse.on('mousemove', ()=>{
-      this.cube.rotation.y += 0.001 * this.mouse.delta.x
-      this.cube.rotation.x += 0.001 * this.mouse.delta.y
+    this.mouse.on('mousemove', () => {
+      if (this.mouse.grab === true) {
+        this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
+          new THREE.Euler(
+            this.toRadians(this.mouse.delta.y * 0.1),
+            this.toRadians(this.mouse.delta.x * 0.1),
+            0,
+            'XYZ'
+          )
+        )
+        this.container.quaternion.multiplyQuaternions(
+          this.deltaRotationQuaternion,
+          this.container.quaternion
+        )
+      }
     })
+  }
+  toRadians(angle) {
+    return angle * (Math.PI / 180)
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Cube')
