@@ -53,7 +53,7 @@ export default class Camera {
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Camera')
-    this.debugFolder.open()
+    // this.debugFolder.open()
     this.debugFolder
       .add(this.camera.position, 'x')
       .step(0.2)

@@ -5,6 +5,7 @@ import PointLights from './PointLights.js'
 import Human from './Human.js'
 import Background from './Background.js'
 import Floor from './Floor.js'
+import SceneColor from './SceneColor.js'
 
 export default class World {
   constructor(_options) {
@@ -25,7 +26,7 @@ export default class World {
 
     if (this.debug) {
       this.debugFolder = this.debug.addFolder('World')
-      this.debugFolder.open()
+      // this.debugFolder.open()
     }
 
     this.setAmbientLight()
@@ -33,7 +34,8 @@ export default class World {
     // this.setBackground()
     this.setFloor()
     this.setHuman()
-    this.setDebug()
+    this.setSceneColor()
+    // this.setDebug()
   }
   setAmbientLight() {
     this.light = new AmbientLight({
@@ -70,26 +72,34 @@ export default class World {
     })
     this.container.add(this.floor.container)
   }
-  setDebug() {
-    this.debugFolder = this.debug.addFolder('Background')
-    this.debugFolder.open()
-
-    this.debugFolder
-      .addColor(this.params, 'color')
-      .name('Color')
-      .onChange(() => {
-        this.floor.container.children[0].material.color = new THREE.Color(
-          this.params.color
-        )
-        // this.background.container.children[0].material.color = new THREE.Color(
-        //   this.params.color
-        // )
-        this.fog.color = new THREE.Color(
-          this.params.color
-        )
-        this.renderer.setClearColor(new THREE.Color(
-          this.params.color
-        ))
-      })
+  setSceneColor() {
+    this.sceneColor = new SceneColor({
+      renderer: this.renderer,
+      fog: this.fog,
+      lights: this.lights
+    })
+    this.sceneColor.changeColor(1)
   }
+  // setDebug() {
+  //   this.debugFolder = this.debug.addFolder('Background')
+  //   this.debugFolder.open()
+
+  //   this.debugFolder
+  //     .addColor(this.params, 'color')
+  //     .name('Color')
+  //     .onChange(() => {
+  //       this.floor.container.children[0].material.color = new THREE.Color(
+  //         this.params.color
+  //       )
+  //       // this.background.container.children[0].material.color = new THREE.Color(
+  //       //   this.params.color
+  //       // )
+  //       this.fog.color = new THREE.Color(
+  //         this.params.color
+  //       )
+  //       this.renderer.setClearColor(new THREE.Color(
+  //         this.params.color
+  //       ))
+  //     })
+  // }
 }

@@ -6,6 +6,7 @@ export default class Mouse extends EventEmitter {
     super()
 
     // Set up
+    this.canvas = document.querySelector('canvas')
     this.grab = false
     this.position = {
       x: window.innerWidth / 2,
@@ -15,14 +16,14 @@ export default class Mouse extends EventEmitter {
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
     }
-    document.addEventListener('mousemove', (_event) => {
+    this.canvas.addEventListener('mousemove', (_event) => {
       this.mousemove(_event)
     })
     this.mousedown = this.mousedown.bind(this)
-    document.addEventListener('mousedown', this.mousedown)
+    this.canvas.addEventListener('mousedown', this.mousedown)
     this.mousedown()
     this.mouseup = this.mouseup.bind(this)
-    document.addEventListener('mouseup', this.mouseup)
+    this.canvas.addEventListener('mouseup', this.mouseup)
     this.mouseup()
   }
   // on('mousemove')
