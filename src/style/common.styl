@@ -8,14 +8,19 @@ canvas
   outline none
 
 .ball
-  width 25px
-  height 25px
-  background black
+  width 26px
+  height 26px
+  background transparent
+  border 1px solid #ffffff
   border-radius 50%
   position absolute
-  top -10px
-  left -10px
+  top -13px
+  left -13px
   cursor pointer
+  &:hover
+    top -14px
+    left -14px
+    border 2px solid #ffffff
 
 #paris
   text-align center

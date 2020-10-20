@@ -3,9 +3,9 @@ import * as THREE from 'three'
 import AmbientLight from './AmbientLight.js'
 import PointLights from './PointLights.js'
 import Human from './Human.js'
-import Background from './Background.js'
 import Floor from './Floor.js'
 import SceneColor from './SceneColor.js'
+import Piedestal from './Piedestal.js'
 
 export default class World {
   constructor(_options) {
@@ -26,13 +26,13 @@ export default class World {
 
     if (this.debug) {
       this.debugFolder = this.debug.addFolder('World')
-      // this.debugFolder.open()
+      this.debugFolder.open()
     }
 
     this.setAmbientLight()
     this.setPointLights()
-    // this.setBackground()
     this.setFloor()
+    this.setPiedestal()
     this.setHuman()
     this.setSceneColor()
     // this.setDebug()
@@ -49,21 +49,18 @@ export default class World {
     })
     this.container.add(this.lights.container)
   }
+  setPiedestal(){
+    this.piedestal = new Piedestal()
+    this.container.add(this.piedestal.container)
+  }
   setHuman() {
     this.human = new Human({
       time: this.time,
       sizes: this.sizes,
       mouse: this.mouse,
-      camera: this.camera
+      camera: this.camera,
     })
     this.container.add(this.human.container)
-  }
-  setBackground() {
-    this.background = new Background({
-      params: this.params,
-      debug: this.debug,
-    })
-    this.container.add(this.background.container)
   }
   setFloor() {
     this.floor = new Floor({
@@ -76,30 +73,26 @@ export default class World {
     this.sceneColor = new SceneColor({
       renderer: this.renderer,
       fog: this.fog,
-      lights: this.lights
+      lights: this.lights,
     })
     this.sceneColor.changeColor(1)
   }
-  // setDebug() {
-  //   this.debugFolder = this.debug.addFolder('Background')
-  //   this.debugFolder.open()
+  setDebug() {
+    this.debugFolder = this.debug.addFolder('Background')
+    this.debugFolder.open()
 
-  //   this.debugFolder
-  //     .addColor(this.params, 'color')
-  //     .name('Color')
-  //     .onChange(() => {
-  //       this.floor.container.children[0].material.color = new THREE.Color(
-  //         this.params.color
-  //       )
-  //       // this.background.container.children[0].material.color = new THREE.Color(
-  //       //   this.params.color
-  //       // )
-  //       this.fog.color = new THREE.Color(
-  //         this.params.color
-  //       )
-  //       this.renderer.setClearColor(new THREE.Color(
-  //         this.params.color
-  //       ))
-  //     })
-  // }
+    this.debugFolder
+      .addColor(this.params, 'color')
+      .name('Color')
+      .onChange(() => {
+        // this.floor.container.children[0].material.color = new THREE.Color(
+        //   this.params.color
+        // )
+        // this.background.container.children[0].material.color = new THREE.Color(
+        //   this.params.color
+        // )
+        this.fog.color = new THREE.Color(this.params.color)
+        this.renderer.setClearColor(new THREE.Color(this.params.color))
+      })
+  }
 }

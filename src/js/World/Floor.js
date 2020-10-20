@@ -15,9 +15,10 @@ export default class Floor {
     this.floor = new THREE.Mesh(
       new THREE.PlaneBufferGeometry(50, 20),
       new THREE.MeshStandardMaterial({
-        color: this.params.color,
-        metalness: 0.3,
-        roughness: 0.8,
+        // color: this.params.color,
+        color: 0xffffff,
+        metalness: 0,
+        roughness: 1,
         wireframe: false,
       })
     )

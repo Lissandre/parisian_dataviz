@@ -27,7 +27,7 @@ export default class App {
   setRenderer() {
     // Set scene
     this.scene = new THREE.Scene()
-    this.scene.fog = new THREE.Fog(0xffffff, 5, 15);
+    this.scene.fog = new THREE.Fog(0xffffff, 5, 15)
     // Set renderer
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
