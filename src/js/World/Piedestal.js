@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
-export default class Piedestal{
-  constructor(_options){
+export default class Piedestal {
+  constructor() {
     // Set options
 
     // Set up
@@ -9,7 +9,7 @@ export default class Piedestal{
 
     this.setPiedestal()
   }
-  setPiedestal(){
+  setPiedestal() {
     this.bottom = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 0.3, 50, 10),
       new THREE.MeshLambertMaterial({

@@ -49,7 +49,7 @@ export default class World {
     })
     this.container.add(this.lights.container)
   }
-  setPiedestal(){
+  setPiedestal() {
     this.piedestal = new Piedestal()
     this.container.add(this.piedestal.container)
   }
