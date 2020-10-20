@@ -46,8 +46,8 @@ export default class ActionPoint{
       this.vector.y = - ( this.vector.y * this.sizes.viewport.height/2 ) + this.sizes.viewport.height/2;
       this.button.style.transform = `translate(${this.vector.x}px, ${this.vector.y}px)`
     })
-    this.button.addEventListener('click', () =>{
-      console.log(this.name)
-    })
+    // this.button.addEventListener('click', () =>{
+    //   console.log(this.name)
+    // })
   }
 }

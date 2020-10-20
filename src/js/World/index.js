@@ -84,12 +84,12 @@ export default class World {
         // this.background.container.children[0].material.color = new THREE.Color(
         //   this.params.color
         // )
-        // this.fog.color = new THREE.Color(
-        //   this.params.color
-        // )
-        // this.renderer.setClearColor(new THREE.Color(
-        //   this.params.color
-        // ))
+        this.fog.color = new THREE.Color(
+          this.params.color
+        )
+        this.renderer.setClearColor(new THREE.Color(
+          this.params.color
+        ))
       })
   }
 }
