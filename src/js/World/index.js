@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
 import Cube from './Cube.js'
+import Human from './Human.js'
 import Background from './Background.js'
 import Floor from './Floor.js'
 
@@ -23,9 +24,10 @@ export default class World {
 
     this.setAmbientLight()
     this.setPointLight()
-    this.setCube()
+    // this.setCube()
     this.setBackground()
     this.setFloor()
+    this.setHuman()
   }
   setAmbientLight() {
     this.light = new AmbientLight({
@@ -46,6 +48,13 @@ export default class World {
       debug: this.debugFolder,
     })
     this.container.add(this.cube.container)
+  }
+  setHuman() {
+    this.human = new Human({
+      time: this.time,
+      mouse: this.mouse,
+    })
+    this.container.add(this.human.container)
   }
   setBackground() {
     this.background = new Background({

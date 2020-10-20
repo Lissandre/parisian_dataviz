@@ -16,7 +16,7 @@ export default class Background {
   }
   setFloor() {
     this.background = new THREE.Mesh(
-      new THREE.PlaneBufferGeometry(50, 20, 10),
+      new THREE.PlaneBufferGeometry(50, 50, 10),
       new THREE.MeshStandardMaterial({
         color: this.params.color,
         metalness: 0.3,
