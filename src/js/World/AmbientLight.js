@@ -17,7 +17,7 @@ export default class AmbientLight {
   }
   createAmbientLight() {
     this.light = new THREE.AmbientLight(this.params.color)
-    this.light.intensity = 0.4
+    this.light.intensity = 0.2
     this.container.add(this.light)
   }
   setDebug() {

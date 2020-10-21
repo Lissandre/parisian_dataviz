@@ -6,7 +6,6 @@ export default class SceneColor {
     this.fog = _options.fog
     this.floor = _options.floor
     this.renderer = _options.renderer
-    this.lights = _options.lights
     this.arrondissement = _options.arrondissement
 
     // Set up
@@ -32,50 +31,6 @@ export default class SceneColor {
       '#ff944a',
       '#f4c3f0',
     ]
-    this.leftColor = [
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-      0xa2a2ff,
-    ]
-    this.rightColor = [
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-      0xffdcdc,
-    ]
 
     this.selectDistrict()
     this.hoverDistrict()
@@ -89,10 +44,12 @@ export default class SceneColor {
       })
     })
     for (let index = 0; index <= 19; index++) {
-      document.querySelector(`#_${index+1}-2`).addEventListener('click', ()=>{
-        this.changeActive(index)
-        this.changeColor(index)
-      })
+      document
+        .querySelector(`#_${index + 1}-2`)
+        .addEventListener('click', () => {
+          this.changeActive(index)
+          this.changeColor(index)
+        })
     }
   }
   hoverDistrict() {
@@ -102,9 +59,11 @@ export default class SceneColor {
       })
     })
     for (let index = 0; index <= 19; index++) {
-      document.querySelector(`#_${index+1}-2`).addEventListener('mouseenter', ()=>{
-        this.setHover(index)
-      })
+      document
+        .querySelector(`#_${index + 1}-2`)
+        .addEventListener('mouseenter', () => {
+          this.setHover(index)
+        })
     }
     this.districts.forEach((district, index) => {
       district.addEventListener('mouseleave', () => {
@@ -112,32 +71,30 @@ export default class SceneColor {
       })
     })
     for (let index = 0; index <= 19; index++) {
-      document.querySelector(`#_${index+1}-2`).addEventListener('mouseleave', ()=>{
-        this.removeHover(index)
-      })
+      document
+        .querySelector(`#_${index + 1}-2`)
+        .addEventListener('mouseleave', () => {
+          this.removeHover(index)
+        })
     }
   }
   changeColor(district) {
     this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
     this.fog.color = new THREE.Color(this.backgroundColor[district])
-    this.lights.container.children[1].color = new THREE.Color(
-      this.leftColor[district]
-    )
-    this.lights.container.children[0].color = new THREE.Color(
-      this.rightColor[district]
-    )
   }
   changeActive(district) {
-    document.querySelectorAll('.active').forEach(active => {active.classList.remove('active')})
+    document.querySelectorAll('.active').forEach((active) => {
+      active.classList.remove('active')
+    })
     this.districts[district].classList.add('active')
-    document.querySelector(`#_${district+1}-2`).classList.add('active')
+    document.querySelector(`#_${district + 1}-2`).classList.add('active')
   }
   setHover(district) {
     this.districts[district].classList.add('hover')
-    document.querySelector(`#_${district+1}-2`).classList.add('hover')
+    document.querySelector(`#_${district + 1}-2`).classList.add('hover')
   }
   removeHover(district) {
     this.districts[district].classList.remove('hover')
-    document.querySelector(`#_${district+1}-2`).classList.remove('hover')
+    document.querySelector(`#_${district + 1}-2`).classList.remove('hover')
   }
 }

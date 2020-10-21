@@ -1,11 +1,12 @@
 import * as THREE from 'three'
 
 import AmbientLight from './AmbientLight.js'
-import PointLights from './PointLights.js'
+import PointLight from './PointLight.js'
 import Human from './Human.js'
 import Floor from './Floor.js'
 import SceneColor from './SceneColor.js'
 import Piedestal from './Piedestal.js'
+import SpotLight from './SpotLight.js'
 
 export default class World {
   constructor(_options) {
@@ -30,7 +31,8 @@ export default class World {
     }
 
     this.setAmbientLight()
-    this.setPointLights()
+    this.setSpotLight()
+    this.setPointLight()
     this.setFloor()
     // this.setPiedestal()
     this.setHuman()
@@ -43,11 +45,17 @@ export default class World {
     })
     this.container.add(this.light.container)
   }
-  setPointLights() {
-    this.lights = new PointLights({
+  setSpotLight() {
+    this.spotlight = new SpotLight({
       debug: this.debugFolder,
     })
-    this.container.add(this.lights.container)
+    this.container.add(this.spotlight.container)
+  }
+  setPointLight() {
+    this.pointlight = new PointLight({
+      debug: this.debugFolder,
+    })
+    this.container.add(this.pointlight.container)
   }
   setPiedestal() {
     this.piedestal = new Piedestal()
@@ -74,7 +82,6 @@ export default class World {
       renderer: this.renderer,
       floor: this.floor,
       fog: this.fog,
-      lights: this.lights,
     })
     this.sceneColor.changeColor(0)
   }
