@@ -8,7 +8,7 @@ export default class SpotLight {
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      positionX:  0,
+      positionX: 0,
       positionY: 20,
       positionZ: 0,
     }
