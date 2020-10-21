@@ -1,7 +1,8 @@
 @import url('https://use.typekit.net/dgu5tnx.css')
 @font-face
-  font-family 'Sharp Regular'
-  src url('../fonts/SharpGroteskMedium25-Regular.ttf') format('truetype')
+  font-family SharpRegular
+  src url(../fonts/SharpGroteskMedium25-Regular.ttf)
+  font-weight 400
 
 html, body
   margin 0
@@ -12,6 +13,36 @@ canvas
   width 100%
   height 100%
   outline none
+
+.startScreen
+  position absolute
+  height 100vh
+  width 100%
+  background #ffffff
+  display flex
+  justify-content center
+  align-items center
+  flex-direction column
+  background-image url(../../static/carte.svg)
+  background-repeat no-repeat
+  background-size cover
+  background-position center center
+  z-index 2
+  & h1
+    font-family SharpRegular sans-serif
+    font-size 72px
+    text-align center
+  & button
+    margin-top 42px
+    text-align center
+    font-size 22px
+    font-family 'acumin-pro' sans-serif
+    font-weight 400
+    background #ffffff
+    border 1px solid #1f0051
+    padding 10px 15px
+    border-radius 25px
+
 
 .ball
   width 26px
@@ -31,7 +62,12 @@ canvas
 .map
   margin 30px 0
 
+.location
+  margin-top 120px
+
 #paris
+  padding 100px 50px
+  box-sizing border-box
   text-align center
   position absolute
   display flex
@@ -40,24 +76,25 @@ canvas
   flex-direction column
   right 0
   top 0
-  width 400px
   height 100vh
   background #ffffff
   font-family sans-serif
   & h2
-    font-family 'Sharp Regular' sans-serif
+    font-family SharpRegular sans-serif
     font-size 35px
-    margin-bottom 0
+    font-weight 400
+    margin 0
     padding 0
   & span
     display flex
-    align-items center
-    padding 0
+    justify-content center
+    padding 0    
     &.description
       font-size 24px
       font-family 'acumin-pro' sans-serif
       font-weight 400
       margin-bottom 8px
+      text-align center
     &.age
       font-family 'acumin-pro' sans-serif
       font-weight 200
@@ -94,6 +131,8 @@ canvas
       font-weight 200
       cursor pointer
       border-radius 50%
+      &.active
+        color #ffffff
 
 districts_colors = ( #ffa4dc #82f4a5 #ffd3b3 #e9ffab #e097ff #43d1c6 #ff9880 #ffeea6 #ff66c5 #c2ffc2 #683eff #80a4f1 #d4ccf8 #ffe3e3 #b8e7ff #7788aa #ffabbf #ff5a5a #ff944a #f4c3f0 )
 
