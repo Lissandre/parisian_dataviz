@@ -20,14 +20,19 @@ export default class App {
     this.mouse = new Mouse()
 
     this.setConfig()
+    this.setStartScreen()
     this.setRenderer()
     this.setCamera()
     this.setWorld()
   }
+  setStartScreen() {
+    document.querySelector('.startScreen button').addEventListener('click', () => {
+      document.querySelector('.startScreen').remove()
+    })
+  }
   setRenderer() {
     // Set scene
     this.scene = new THREE.Scene()
-    this.scene.fog = new THREE.Fog(0xffffff, 5, 15)
     // Set renderer
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
@@ -35,9 +40,8 @@ export default class App {
       antialiasing: true,
     })
     this.renderer.shadowMap.enabled = true
-    this.renderer.shadowMapType = THREE.PCFSoftShadowMap
     // Set background color
-    this.renderer.setClearColor(0xffffff, 1)
+    this.renderer.setClearColor(0x000000, 0)
     // Set renderer pixel ratio & sizes
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)

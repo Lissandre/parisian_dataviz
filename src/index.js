@@ -5,7 +5,6 @@ new App({
   canvas: document.querySelector('#_canvas'),
   config: 'dev',
 })
-
 document.querySelector('.startScreen button').addEventListener('click', () => {
   document.querySelector('.startScreen').remove()
 })

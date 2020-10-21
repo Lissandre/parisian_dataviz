@@ -1,11 +1,8 @@
-import * as THREE from 'three'
+import { TweenMax } from 'gsap'
 
 export default class SceneColor {
   constructor(_options) {
     // Set options
-    this.fog = _options.fog
-    this.floor = _options.floor
-    this.renderer = _options.renderer
     this.arrondissement = _options.arrondissement
 
     // Set up
@@ -31,6 +28,7 @@ export default class SceneColor {
       '#ff944a',
       '#f4c3f0',
     ]
+    this.background = document.querySelector('.background')
 
     this.selectDistrict()
     this.hoverDistrict()
@@ -79,8 +77,13 @@ export default class SceneColor {
     }
   }
   changeColor(district) {
-    this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
-    this.fog.color = new THREE.Color(this.backgroundColor[district])
+    TweenMax.to(this.background.style, {
+      duration: 1.3,
+      background: this.backgroundColor[district],
+    })
+
+    //this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
+    //this.fog.color = new THREE.Color(this.backgroundColor[district])
   }
   changeActive(district) {
     document.querySelectorAll('.active').forEach((active) => {
@@ -96,5 +99,22 @@ export default class SceneColor {
   removeHover(district) {
     this.districts[district].classList.remove('hover')
     document.querySelector(`#_${district + 1}-2`).classList.remove('hover')
+  }
+  hexToRGB(h) {
+    this.r = 0
+    this.g = 0
+    this.b = 0
+    // 3 digits
+    if (h.length === 4) {
+      this.r = "0x" + h[1] + h[1];
+      this.g = "0x" + h[2] + h[2];
+      this.b = "0x" + h[3] + h[3];
+  
+    // 6 digits
+    } else if (h.length === 7) {
+      this.r = "0x" + h[1] + h[2];
+      this.g = "0x" + h[3] + h[4];
+      this.b = "0x" + h[5] + h[6];
+    }
   }
 }

@@ -13,9 +13,19 @@ canvas
   width 100%
   height 100%
   outline none
+  z-index 1
+  position absolute
+  top 0
+  left 0
+
+.background
+  width 100%
+  height 100vh
 
 .startScreen
   position absolute
+  top 0
+  left 0
   height 100vh
   width 100%
   background #ffffff
@@ -27,7 +37,7 @@ canvas
   background-repeat no-repeat
   background-size cover
   background-position center center
-  z-index 2
+  z-index 10
   & h1
     font-family SharpRegular sans-serif
     font-size 72px
@@ -42,6 +52,8 @@ canvas
     border 1px solid #1f0051
     padding 10px 15px
     border-radius 25px
+    cursor pointer
+    outline none
 
 
 .ball
@@ -54,6 +66,7 @@ canvas
   top -13px
   left -13px
   cursor pointer
+  z-index 20
   &:hover
     top -14px
     left -14px
