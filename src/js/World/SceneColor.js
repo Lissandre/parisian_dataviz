@@ -78,7 +78,7 @@ export default class SceneColor {
   }
   changeColor(district) {
     TweenMax.to(this.background.style, {
-      duration: 1.3,
+      duration: 1.5,
       background: this.backgroundColor[district],
     })
 
