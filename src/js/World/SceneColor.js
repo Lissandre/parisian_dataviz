@@ -87,6 +87,12 @@ export default class SceneColor {
         this.changeColor(index)
       })
     })
+    for (let index = 0; index <= 19; index++) {
+      document.querySelector(`#_${index+1}-2`).addEventListener('click', ()=>{
+        this.changeActive(index)
+        this.changeColor(index)
+      })
+    }
   }
   changeColor(district) {
     this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
@@ -101,6 +107,10 @@ export default class SceneColor {
   }
   changeActive(district) {
     document.querySelector('.active').classList.remove('active')
+    for (let j = 0; j <= 19; j++) {
+      document.querySelector(`#_${j+1}-2`).setAttribute('fill', '#fff')
+    }
     this.districts[district].classList.add('active')
+    document.querySelector(`#_${district+1}-2`).setAttribute('fill', this.backgroundColor[district])
   }
 }

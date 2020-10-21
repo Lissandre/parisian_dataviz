@@ -22,7 +22,7 @@ export default class Sizes extends EventEmitter {
   resize() {
     // Add div to get viewport exact values on every screens
     document.body.appendChild(this.sizeViewport)
-    this.viewport.width = this.sizeViewport.offsetWidth - 500
+    this.viewport.width = this.sizeViewport.offsetWidth - 400
     this.viewport.height = this.sizeViewport.offsetHeight
     document.body.removeChild(this.sizeViewport)
     // Get viewport width & height
