@@ -78,6 +78,7 @@ export default class SceneColor {
     ]
 
     this.selectDistrict()
+    this.hoverDistrict()
   }
   selectDistrict() {
     this.districts = document.querySelectorAll('li.district')
@@ -94,10 +95,31 @@ export default class SceneColor {
       })
     }
   }
+  hoverDistrict() {
+    this.districts.forEach((district, index) => {
+      district.addEventListener('mouseenter', () => {
+        this.setHover(index)
+      })
+    })
+    for (let index = 0; index <= 19; index++) {
+      document.querySelector(`#_${index+1}-2`).addEventListener('mouseenter', ()=>{
+        this.setHover(index)
+      })
+    }
+    this.districts.forEach((district, index) => {
+      district.addEventListener('mouseleave', () => {
+        this.removeHover(index)
+      })
+    })
+    for (let index = 0; index <= 19; index++) {
+      document.querySelector(`#_${index+1}-2`).addEventListener('mouseleave', ()=>{
+        this.removeHover(index)
+      })
+    }
+  }
   changeColor(district) {
     this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
     this.fog.color = new THREE.Color(this.backgroundColor[district])
-    // this.floor.container.children[0].material.color = new THREE.Color(this.backgroundColor[district])
     this.lights.container.children[1].color = new THREE.Color(
       this.leftColor[district]
     )
@@ -106,11 +128,16 @@ export default class SceneColor {
     )
   }
   changeActive(district) {
-    document.querySelector('.active').classList.remove('active')
-    for (let j = 0; j <= 19; j++) {
-      document.querySelector(`#_${j+1}-2`).setAttribute('fill', '#fff')
-    }
+    document.querySelectorAll('.active').forEach(active => {active.classList.remove('active')})
     this.districts[district].classList.add('active')
-    document.querySelector(`#_${district+1}-2`).setAttribute('fill', this.backgroundColor[district])
+    document.querySelector(`#_${district+1}-2`).classList.add('active')
+  }
+  setHover(district) {
+    this.districts[district].classList.add('hover')
+    document.querySelector(`#_${district+1}-2`).classList.add('hover')
+  }
+  removeHover(district) {
+    this.districts[district].classList.remove('hover')
+    document.querySelector(`#_${district+1}-2`).classList.remove('hover')
   }
 }

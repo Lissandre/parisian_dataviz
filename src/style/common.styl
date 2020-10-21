@@ -93,16 +93,14 @@ canvas
       font-family 'acumin-pro' sans-serif
       font-weight 200
       cursor pointer
-      &:hover, 
-      &.active
-        border-radius 50%
+      border-radius 50%
 
 districts_colors = ( #ffa4dc #82f4a5 #ffd3b3 #e9ffab #e097ff #43d1c6 #ff9880 #ffeea6 #ff66c5 #c2ffc2 #683eff #80a4f1 #d4ccf8 #ffe3e3 #b8e7ff #7788aa #ffabbf #ff5a5a #ff944a #f4c3f0 )
 
 for num in range(1, 20)
-  .district-{num}:hover, .district-{num}.active
+  .district-{num}:hover, .district-{num}.active, .district-{num}.hover
     background districts_colors[num - 1]
 
 for num in range(1, 20)
-  #_{num}-2:hover
+  #_{num}-2:hover, #_{num}-2.active, #_{num}-2.hover
     fill districts_colors[num - 1]
