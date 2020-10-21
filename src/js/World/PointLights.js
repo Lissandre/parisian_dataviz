@@ -11,8 +11,8 @@ export default class PointLights {
       colorRight: 0xffffff,
       colorLeft: 0xffffff,
       positionX: 4,
-      positionY: 2,
-      positionZ: 5,
+      positionY: 3,
+      positionZ: 6,
     }
 
     this.createPointLights()

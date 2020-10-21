@@ -1,0 +1,103 @@
+{
+  "districts": {
+    "1": {
+      "id": 1,
+      "name": "Dylan",
+      "description" : "Touriste"
+    },
+    "2": {
+      "id": 2,
+      "name": "Lucas",
+      "description" : "Dévergondé"
+    },
+    "3": {
+      "id": 3,
+      "name": "Séraphin",
+      "description" : "Mange sans gluten"
+    },
+    "4": {
+      "id": 4,
+      "name": "Fred",
+      "description" : "Alcoolique"
+    },
+    "5": {
+      "id": 5,
+      "name": "Pédro",
+      "description" : "Cultivé"
+    },
+    "6": {
+      "id": 6,
+      "name": "Nicolas",
+      "description" : "Élégant"
+    },
+    "7": {
+      "id": 7,
+      "name": "Mathieu",
+      "description" : "Hautain"
+    },
+    "8": {
+      "id": 8,
+      "name": "Édouard",
+      "description" : "Richoux"
+    },
+    "9": {
+      "id": 9,
+      "name": "Charles",
+      "description" : "Romantique"
+    },"10": {
+      "id": 10,
+      "name": "Marcel",
+      "description" : "Bobo"
+    },
+    "11": {
+      "id": 11,
+      "name": "Cédric",
+      "description" : "Sympa"
+    },
+    "12": {
+      "id": 12,
+      "name": "Roger",
+      "description" : "Le néan"
+    },
+    "13": {
+      "id": 13,
+      "name": "Victor",
+      "description" : "Mou"
+    },
+    "14": {
+      "id": 14,
+      "name": "Tristan",
+      "description" : "Inutile"
+    },
+    "15": {
+      "id": 15,
+      "name": "Pierre",
+      "description" : "Austère"
+    },
+    "16": {
+      "id": 16,
+      "name": "Jean-Claude",
+      "description" : "Le ieuv"
+    },
+    "17": {
+      "id": 17,
+      "name": "Pascal",
+      "description" : "Père de famille"
+    },
+    "18": {
+      "id": 18,
+      "name": "Phil",
+      "description" : "Pas très net"
+    },
+    "19": {
+      "id": 19,
+      "name": "Téophile",
+      "description" : "Hipster"
+    },
+    "20": {
+      "id": 20,
+      "name": "Fernand",
+      "description" : "Pas de personnalité"
+    }
+  }
+}

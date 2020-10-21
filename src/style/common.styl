@@ -2,6 +2,7 @@ html, body
   margin 0
   padding 0
   overflow hidden
+  color #1f0051
 canvas
   width 100%
   height 100%
@@ -68,6 +69,12 @@ canvas
       font-size 32px
       font-weight lighter
       cursor pointer
+      &:hover, 
       &.active
-        background pink
         border-radius 50%
+
+districts_colors = ( #ffa4dc #82f4a5 #ffd3b3 #e9ffab #e097ff #43d1c6 #ff9880 #ffeea6 #ff66c5 #c2ffc2 #683eff #80a4f1 #d4ccf8 #ffe3e3 #b8e7ff #7788aa #ffabbf #ff5a5a #ff944a #f4c3f0 )
+
+for num in range(1, 20)
+  .district-{num}:hover, .district-{num}.active
+    background districts_colors[num - 1]

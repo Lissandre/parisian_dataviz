@@ -14,12 +14,9 @@ export default class Floor {
   setFloor() {
     this.floor = new THREE.Mesh(
       new THREE.PlaneBufferGeometry(50, 20),
-      new THREE.MeshStandardMaterial({
-        // color: this.params.color,
-        color: 0xffffff,
-        metalness: 0,
-        roughness: 1,
-        wireframe: false,
+      new THREE.ShadowMaterial({
+        opacity: 0.2,
+        transparent: true,
       })
     )
     this.floor.receiveShadow = true

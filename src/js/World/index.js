@@ -32,7 +32,7 @@ export default class World {
     this.setAmbientLight()
     this.setPointLights()
     this.setFloor()
-    this.setPiedestal()
+    // this.setPiedestal()
     this.setHuman()
     this.setSceneColor()
     // this.setDebug()
@@ -72,10 +72,11 @@ export default class World {
   setSceneColor() {
     this.sceneColor = new SceneColor({
       renderer: this.renderer,
+      floor: this.floor,
       fog: this.fog,
       lights: this.lights,
     })
-    this.sceneColor.changeColor(1)
+    this.sceneColor.changeColor(0)
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Background')

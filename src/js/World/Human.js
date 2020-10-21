@@ -27,7 +27,6 @@ export default class Human {
       model.rotation.x = -Math.PI / 2
       model.traverse((child) => {
         child.castShadow = true
-        child.position.y = 0.2
         child.position.z = 0.5
       })
       this.container.add(model)
@@ -65,7 +64,7 @@ export default class Human {
       name: 'hand',
       position: {
         x: 0.13,
-        y: 0.3,
+        y: 0.1,
         z: 0,
       },
       camera: this.camera,
@@ -81,7 +80,7 @@ export default class Human {
       name: 'foot',
       position: {
         x: 1.55,
-        y: 2.97,
+        y: 2.77,
         z: 0,
       },
       camera: this.camera,
