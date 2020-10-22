@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { TweenMax } from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import texture from '../../textures/images.jpeg'
 import HumanModel from '../../models/personnage(1).glb'
@@ -41,13 +42,6 @@ export default class Human {
       this.container.scale.set(0.005, 0.005, 0.005)
       this.container.rotation.y = 0.1
       this.container.rotation.y = -Math.PI / 2
-      // model.traverse((child) => {
-      //   child.castShadow = true
-      //   child.position.z = 0.5
-      // })
-      // this.container.add(model)
-      // this.setHand()
-      // this.setFoot()
     })
   }
   setMovement() {
@@ -62,7 +56,6 @@ export default class Human {
       }
       this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
         new THREE.Euler(
-          // this.toRadians(this.mouse.delta.y * 0.1),
           0,
           this.toRadians(this.speed),
           0,
@@ -73,6 +66,20 @@ export default class Human {
         this.deltaRotationQuaternion,
         this.container.quaternion
       )
+    })
+  }
+  change(){
+    TweenMax.to(this.container.position, {
+      duration: 0.57,
+      x: 5,
+    })
+    setTimeout(()=>{
+      this.container.position.x = -7
+    }, 600)
+    TweenMax.to(this.container.position, {
+      delay: 0.7,
+      duration: 0.57,
+      x: 0,
     })
   }
   setHand() {

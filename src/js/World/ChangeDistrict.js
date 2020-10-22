@@ -6,6 +6,7 @@ export default class ChangeDistrict {
     // Set options
     this.floor = _options.floor
     this.wall = _options.wall
+    this.human = _options.human
 
     // Set up
     this.districts = document.querySelectorAll('li.district')
@@ -21,7 +22,7 @@ export default class ChangeDistrict {
     this.districts.forEach((district, index) => {
       district.addEventListener('click', () => {
         this.changeActive(index)
-        this.sceneColor.changeColor(index)
+        this.human.change()
       })
     })
     for (let index = 0; index <= 19; index++) {
@@ -29,11 +30,12 @@ export default class ChangeDistrict {
         .querySelector(`#_${index + 1}-2`)
         .addEventListener('click', () => {
           this.changeActive(index)
-          this.sceneColor.changeColor(index)
+          this.human.change()
         })
     }
   }
   changeActive(district) {
+    this.sceneColor.changeColor(district)
     document.querySelectorAll('.active').forEach((active) => {
       active.classList.remove('active')
     })

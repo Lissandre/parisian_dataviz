@@ -83,7 +83,8 @@ export default class World {
   setChangeDistrict() {
     this.changeDistrict = new ChangeDistrict({
       floor: this.floor,
-      wall: this.wall
+      wall: this.wall,
+      human: this.human
     })
     this.changeDistrict.changeActive(0)
   }
