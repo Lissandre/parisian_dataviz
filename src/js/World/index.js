@@ -4,6 +4,7 @@ import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
 import Human from './Human.js'
 import Floor from './Floor.js'
+import ChangeDistrict from './ChangeDistrict.js'
 import SceneColor from './SceneColor.js'
 import Piedestal from './Piedestal.js'
 import SpotLight from './SpotLight.js'
@@ -36,7 +37,7 @@ export default class World {
     this.setFloor()
     // this.setPiedestal()
     this.setHuman()
-    this.setSceneColor()
+    this.setChangeDistrict()
     // this.setDebug()
   }
   setAmbientLight() {
@@ -77,13 +78,9 @@ export default class World {
     })
     this.container.add(this.floor.container)
   }
-  setSceneColor() {
-    this.sceneColor = new SceneColor({
-      renderer: this.renderer,
-      floor: this.floor,
-      fog: this.fog,
-    })
-    this.sceneColor.changeColor(0)
+  setChangeDistrict() {
+    this.changeDistrict = new ChangeDistrict()
+    this.changeDistrict.changeActive(0)
   }
   setDebug() {
     this.debugFolder = this.debug.addFolder('Background')

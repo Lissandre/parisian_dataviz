@@ -30,7 +30,7 @@ export default class Human {
       this.container.position.y = 2.3
       this.container.scale.set(0.005, 0.005, 0.005)
       console.log(this.container)
-      // this.container.rotation.y = -Math.PI / 2
+      this.container.rotation.y = -Math.PI / 2
       // model.traverse((child) => {
       //   child.castShadow = true
       //   child.position.z = 0.5

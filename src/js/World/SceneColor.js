@@ -3,7 +3,7 @@ import { TweenMax } from 'gsap'
 export default class SceneColor {
   constructor(_options) {
     // Set options
-    this.arrondissement = _options.arrondissement
+    this.districts = _options.districts
 
     // Set up
     this.backgroundColor = [
@@ -30,25 +30,7 @@ export default class SceneColor {
     ]
     this.background = document.querySelector('.background')
 
-    this.selectDistrict()
     this.hoverDistrict()
-  }
-  selectDistrict() {
-    this.districts = document.querySelectorAll('li.district')
-    this.districts.forEach((district, index) => {
-      district.addEventListener('click', () => {
-        this.changeActive(index)
-        this.changeColor(index)
-      })
-    })
-    for (let index = 0; index <= 19; index++) {
-      document
-        .querySelector(`#_${index + 1}-2`)
-        .addEventListener('click', () => {
-          this.changeActive(index)
-          this.changeColor(index)
-        })
-    }
   }
   hoverDistrict() {
     this.districts.forEach((district, index) => {
@@ -84,13 +66,6 @@ export default class SceneColor {
     document.documentElement.style.setProperty('--color', `${this.backgroundColor[district]}`)
     //this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
     //this.fog.color = new THREE.Color(this.backgroundColor[district])
-  }
-  changeActive(district) {
-    document.querySelectorAll('.active').forEach((active) => {
-      active.classList.remove('active')
-    })
-    this.districts[district].classList.add('active')
-    document.querySelector(`#_${district + 1}-2`).classList.add('active')
   }
   setHover(district) {
     this.districts[district].classList.add('hover')

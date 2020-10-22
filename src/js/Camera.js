@@ -21,10 +21,10 @@ export default class Camera {
   setCamera() {
     // Create camera
     this.camera = new THREE.PerspectiveCamera(
-      75,
+      70,
       this.sizes.viewport.width / this.sizes.viewport.height,
       0.1,
-      1000
+      600
     )
     this.container.add(this.camera)
     // Change camera aspect on resize
@@ -37,9 +37,13 @@ export default class Camera {
   }
   setPosition() {
     // Set camera position
-    this.camera.position.x = 0
-    this.camera.position.y = 1.5
-    this.camera.position.z = 6
+    this.camera.position.x = 1.1
+    this.camera.position.y = 2.1
+    this.camera.position.z = 4.2
+
+    this.container.rotation.x = -Math.PI/20
+    this.camera.rotation.y = Math.PI/10
+    this.container.rotation.z = Math.PI/100
   }
   setOrbitControls() {
     // Set orbit control
@@ -57,7 +61,7 @@ export default class Camera {
     this.debugFolder
       .add(this.camera.position, 'x')
       .step(0.2)
-      .min(0)
+      .min(-20)
       .max(20)
       .name('Position X')
     this.debugFolder
