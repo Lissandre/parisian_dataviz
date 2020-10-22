@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
+import datas from '../data.json'
 
 import Sizes from './Tools/Sizes.js'
 import Time from './Tools/Time.js'
@@ -78,6 +79,7 @@ export default class App {
       mouse: this.mouse,
       fog: this.scene.fog,
       renderer: this.renderer,
+      datas: datas,
     })
     // Add world to scene
     this.scene.add(this.world.container)

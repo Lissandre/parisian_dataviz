@@ -7,6 +7,7 @@ import Floor from './Floor.js'
 import Wall from './Wall.js'
 import ChangeDistrict from './ChangeDistrict.js'
 import DirectionalLight from './DirectionalLight.js'
+import DistrictInformations from './DistrictInformations.js'
 
 export default class World {
   constructor(_options) {
@@ -18,6 +19,7 @@ export default class World {
     this.camera = _options.camera
     this.fog = _options.fog
     this.renderer = _options.renderer
+    this.data = _options.datas
 
     // Set up
     this.container = new THREE.Object3D()
@@ -36,6 +38,7 @@ export default class World {
     this.setFloor()
     this.setWall()
     this.setHuman()
+    this.setDistrictInformations()
     this.setChangeDistrict()
     // this.setDebug()
   }
@@ -80,11 +83,18 @@ export default class World {
     })
     this.container.add(this.wall.container)
   }
+  setDistrictInformations() {
+    this.infos = new DistrictInformations({
+      data: this.data,
+      human: this.human
+    })
+  }
   setChangeDistrict() {
     this.changeDistrict = new ChangeDistrict({
       floor: this.floor,
       wall: this.wall,
-      human: this.human
+      human: this.human,
+      infos: this.infos
     })
     this.changeDistrict.changeActive(0)
   }

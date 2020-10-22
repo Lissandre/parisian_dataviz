@@ -7,6 +7,7 @@ export default class ChangeDistrict {
     this.floor = _options.floor
     this.wall = _options.wall
     this.human = _options.human
+    this.infos = _options.infos
 
     // Set up
     this.districts = document.querySelectorAll('li.district')
@@ -23,6 +24,7 @@ export default class ChangeDistrict {
       district.addEventListener('click', () => {
         this.changeActive(index)
         this.human.change()
+        this.infos.changeInfos(index)
       })
     })
     for (let index = 0; index <= 19; index++) {
@@ -31,6 +33,7 @@ export default class ChangeDistrict {
         .addEventListener('click', () => {
           this.changeActive(index)
           this.human.change()
+          this.infos.changeInfos(index)
         })
     }
   }
