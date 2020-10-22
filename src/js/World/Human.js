@@ -1,6 +1,7 @@
 import * as THREE from 'three'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
-import HumanModel from '../../models/personnage.fbx'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import texture from '../../textures/images.jpeg'
+import HumanModel from '../../models/personnage(1).glb'
 import ActionPoint from './ActionPoint.js'
 
 export default class Human {
@@ -16,17 +17,25 @@ export default class Human {
     this.speed = 0
     this.deceleration = 0.05
     this.container = new THREE.Object3D()
-    this.loader = new FBXLoader()
+    this.loader = new GLTFLoader()
+    this.textureloader = new THREE.TextureLoader()
 
     this.loadModel()
     this.setMovement()
   }
   loadModel() {
     this.loader.load(HumanModel, (model) => {
-      model.traverse((child) => {
+      model.scene.traverse((child) => {
         child.castShadow = true
       })
-      this.container.add(model)
+      model.scene.traverse(( child ) => {
+        if ( child.name === 'veste') {
+          child.material = new THREE.MeshBasicMaterial({map: this.textureloader.load(texture)})
+          child.material.map.wrapT = THREE.RepeatWrapping
+          child.material.map.wrapS = THREE.RepeatWrapping
+        }
+      })
+      this.container.add(model.scene)
       this.container.position.y = 2.4
       this.container.scale.set(0.005, 0.005, 0.005)
       this.container.rotation.y = 0.1
