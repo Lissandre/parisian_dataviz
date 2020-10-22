@@ -20,7 +20,7 @@ export default class PointLight {
     }
   }
   createPointLight() {
-    this.light = new THREE.PointLight(0xffffff, 0.2, 10)
+    this.light = new THREE.PointLight(0xffffff, 0.2, 14)
     this.light.castShadow = true
     this.light.shadow.mapSize.width = 2048
     this.light.shadow.mapSize.height = 2048

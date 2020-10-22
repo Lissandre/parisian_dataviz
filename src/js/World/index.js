@@ -6,7 +6,6 @@ import Human from './Human.js'
 import Floor from './Floor.js'
 import Wall from './Wall.js'
 import ChangeDistrict from './ChangeDistrict.js'
-import SpotLight from './SpotLight.js'
 import DirectionalLight from './DirectionalLight.js'
 
 export default class World {
@@ -32,7 +31,6 @@ export default class World {
     }
 
     this.setAmbientLight()
-    // this.setSpotLight()
     this.setPointLight()
     this.setDirectionalLight()
     this.setFloor()
@@ -52,12 +50,6 @@ export default class World {
       debug: this.debugFolder,
     })
     this.container.add(this.directionallight.container)
-  }
-  setSpotLight() {
-    this.spotlight = new SpotLight({
-      debug: this.debugFolder,
-    })
-    this.container.add(this.spotlight.container)
   }
   setPointLight() {
     this.pointlight = new PointLight({

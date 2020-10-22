@@ -39,7 +39,7 @@ export default class Camera {
     // Set camera position
     this.camera.position.x = 0.6
     this.camera.position.y = 3
-    this.camera.position.z = 3
+    this.camera.position.z = 3.5
 
     this.camera.rotation.x = -0.33
     this.camera.rotation.y = 6.46
