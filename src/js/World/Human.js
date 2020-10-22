@@ -33,6 +33,7 @@ export default class Human {
           child.material = new THREE.MeshBasicMaterial({map: this.textureloader.load(texture)})
           child.material.map.wrapT = THREE.RepeatWrapping
           child.material.map.wrapS = THREE.RepeatWrapping
+          child.material.side = THREE.DoubleSide
         }
       })
       this.container.add(model.scene)
