@@ -1,6 +1,6 @@
 import * as THREE from 'three'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-import HumanModel from '../../models/MaleLow.obj'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
+import HumanModel from '../../models/personnage.fbx'
 import ActionPoint from './ActionPoint.js'
 
 export default class Human {
@@ -16,22 +16,28 @@ export default class Human {
     this.speed = 0
     this.deceleration = 0.05
     this.container = new THREE.Object3D()
-    this.OBJLoader = new OBJLoader()
+    this.loader = new FBXLoader()
 
     this.loadModel()
     this.setMovement()
   }
   loadModel() {
-    this.OBJLoader.load(HumanModel, (model) => {
-      model.scale.set(0.02, 0.02, 0.02)
-      model.rotation.x = -Math.PI / 2
+    this.loader.load(HumanModel, (model) => {
       model.traverse((child) => {
         child.castShadow = true
-        child.position.z = 0.5
       })
       this.container.add(model)
-      this.setHand()
-      this.setFoot()
+      this.container.position.y = 2.3
+      this.container.scale.set(0.005, 0.005, 0.005)
+      console.log(this.container)
+      // this.container.rotation.y = -Math.PI / 2
+      // model.traverse((child) => {
+      //   child.castShadow = true
+      //   child.position.z = 0.5
+      // })
+      // this.container.add(model)
+      // this.setHand()
+      // this.setFoot()
     })
   }
   setMovement() {

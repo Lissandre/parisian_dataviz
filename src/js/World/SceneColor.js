@@ -81,7 +81,7 @@ export default class SceneColor {
       duration: 1.5,
       background: this.backgroundColor[district],
     })
-
+    document.documentElement.style.setProperty('--color', `${this.backgroundColor[district]}`)
     //this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
     //this.fog.color = new THREE.Color(this.backgroundColor[district])
   }

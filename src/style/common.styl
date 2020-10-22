@@ -1,8 +1,4 @@
 @import url('https://use.typekit.net/dgu5tnx.css')
-@font-face
-  font-family SharpRegular
-  src url(../fonts/SharpGroteskMedium25-Regular.ttf)
-  font-weight 400
 
 html, body
   margin 0
@@ -39,7 +35,7 @@ canvas
   background-position center center
   z-index 10
   & h1
-    font-family SharpRegular sans-serif
+    font-family 'SharpRegular' sans-serif
     font-size 72px
     text-align center
   & button
@@ -54,7 +50,7 @@ canvas
     border-radius 25px
     cursor pointer
     outline none
-
+    color #1f0051
 
 .ball
   width 26px
@@ -93,7 +89,7 @@ canvas
   background #ffffff
   font-family sans-serif
   & h2
-    font-family SharpRegular sans-serif
+    font-family 'SharpRegular' sans-serif
     font-size 35px
     font-weight 400
     margin 0
@@ -162,3 +158,24 @@ for num in range(1, 20)
     fill districts_colors[num - 1]
   #_{num}-2.hover
     cursor pointer
+
+.colorPoint
+  animation-duration 15s
+  animation-name changeColor
+  animation-iteration-count infinite
+  transition 0.32s color linear
+
+@keyframes changeColor
+  for num in range(0, 19)
+    {5% * num}
+      color districts_colors[num]
+
+::selection
+  color #ffffff
+  background var(--color)
+  outline-color var(--color)
+
+::-moz-selection
+  color #ffffff
+  background var(--color)
+  outline-color var(--color)
