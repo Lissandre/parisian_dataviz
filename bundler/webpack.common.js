@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
   },
   plugins: [
-    new CopyWebpackPlugin({ patterns: [{ from: 'static', to: 'dist' }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: 'static', to: 'static' }] }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       minify: true,
