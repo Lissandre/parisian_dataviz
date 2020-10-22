@@ -27,9 +27,9 @@ export default class Human {
         child.castShadow = true
       })
       this.container.add(model)
-      this.container.position.y = 2.3
+      this.container.position.y = 2.4
       this.container.scale.set(0.005, 0.005, 0.005)
-      console.log(this.container)
+      this.container.rotation.y = 0.1
       this.container.rotation.y = -Math.PI / 2
       // model.traverse((child) => {
       //   child.castShadow = true

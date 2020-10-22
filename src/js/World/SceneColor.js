@@ -1,9 +1,11 @@
 import { TweenMax } from 'gsap'
-
+import * as THREE from 'three'
 export default class SceneColor {
   constructor(_options) {
     // Set options
     this.districts = _options.districts
+    this.floor = _options.floor
+    this.wall = _options.wall
 
     // Set up
     this.backgroundColor = [
@@ -28,7 +30,6 @@ export default class SceneColor {
       '#ff944a',
       '#f4c3f0',
     ]
-    this.background = document.querySelector('.background')
 
     this.hoverDistrict()
   }
@@ -59,9 +60,18 @@ export default class SceneColor {
     }
   }
   changeColor(district) {
-    TweenMax.to(this.background.style, {
+    this.hexToRGB(this.backgroundColor[district])
+    TweenMax.to(this.floor.container.children[0].material.color, {
       duration: 1.5,
-      background: this.backgroundColor[district],
+      r: this.r/255,
+      g: this.g/255,
+      b: this.b/255,
+    })
+    TweenMax.to(this.wall.container.children[0].material.color, {
+      duration: 1.5,
+      r: this.r/255,
+      g: this.g/255,
+      b: this.b/255,
     })
     document.documentElement.style.setProperty('--color', `${this.backgroundColor[district]}`)
     //this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))

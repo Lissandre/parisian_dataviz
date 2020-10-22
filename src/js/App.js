@@ -39,6 +39,7 @@ export default class App {
       alpha: true,
       antialiasing: true,
     })
+    this.renderer.shadowMap.Type = THREE.PCFSoftShadowMap
     this.renderer.shadowMap.enabled = true
     // Set background color
     this.renderer.setClearColor(0x000000, 0)

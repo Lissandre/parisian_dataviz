@@ -4,10 +4,10 @@ import AmbientLight from './AmbientLight.js'
 import PointLight from './PointLight.js'
 import Human from './Human.js'
 import Floor from './Floor.js'
+import Wall from './Wall.js'
 import ChangeDistrict from './ChangeDistrict.js'
-import SceneColor from './SceneColor.js'
-import Piedestal from './Piedestal.js'
 import SpotLight from './SpotLight.js'
+import DirectionalLight from './DirectionalLight.js'
 
 export default class World {
   constructor(_options) {
@@ -32,10 +32,11 @@ export default class World {
     }
 
     this.setAmbientLight()
-    this.setSpotLight()
+    // this.setSpotLight()
     this.setPointLight()
+    this.setDirectionalLight()
     this.setFloor()
-    // this.setPiedestal()
+    this.setWall()
     this.setHuman()
     this.setChangeDistrict()
     // this.setDebug()
@@ -45,6 +46,12 @@ export default class World {
       debug: this.debugFolder,
     })
     this.container.add(this.light.container)
+  }
+  setDirectionalLight() {
+    this.directionallight = new DirectionalLight({
+      debug: this.debugFolder,
+    })
+    this.container.add(this.directionallight.container)
   }
   setSpotLight() {
     this.spotlight = new SpotLight({
@@ -57,10 +64,6 @@ export default class World {
       debug: this.debugFolder,
     })
     this.container.add(this.pointlight.container)
-  }
-  setPiedestal() {
-    this.piedestal = new Piedestal()
-    this.container.add(this.piedestal.container)
   }
   setHuman() {
     this.human = new Human({
@@ -78,8 +81,18 @@ export default class World {
     })
     this.container.add(this.floor.container)
   }
+  setWall() {
+    this.wall = new Wall({
+      params: this.params,
+      debug: this.debug,
+    })
+    this.container.add(this.wall.container)
+  }
   setChangeDistrict() {
-    this.changeDistrict = new ChangeDistrict()
+    this.changeDistrict = new ChangeDistrict({
+      floor: this.floor,
+      wall: this.wall
+    })
     this.changeDistrict.changeActive(0)
   }
   setDebug() {

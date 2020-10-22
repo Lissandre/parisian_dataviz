@@ -4,11 +4,15 @@ import SceneColor from './SceneColor.js'
 export default class ChangeDistrict {
   constructor(_options) {
     // Set options
+    this.floor = _options.floor
+    this.wall = _options.wall
 
     // Set up
     this.districts = document.querySelectorAll('li.district')
     this.sceneColor = new SceneColor({
-      districts: this.districts
+      districts: this.districts,
+      floor: this.floor,
+      wall: this.wall
     })
 
     this.selectDistrict()

@@ -37,13 +37,13 @@ export default class Camera {
   }
   setPosition() {
     // Set camera position
-    this.camera.position.x = 1.1
-    this.camera.position.y = 2.1
-    this.camera.position.z = 4.2
+    this.camera.position.x = 0.6
+    this.camera.position.y = 3
+    this.camera.position.z = 3
 
-    this.container.rotation.x = -Math.PI/20
-    this.camera.rotation.y = Math.PI/10
-    this.container.rotation.z = Math.PI/100
+    this.camera.rotation.x = -0.33
+    this.camera.rotation.y = 6.46
+    this.camera.rotation.z = 0.07
   }
   setOrbitControls() {
     // Set orbit control
@@ -76,5 +76,23 @@ export default class Camera {
       .min(0)
       .max(20)
       .name('Position Z')
+    this.debugFolder
+      .add(this.camera.rotation, 'x')
+      .step(0.01)
+      .min(-20)
+      .max(20)
+      .name('Rotation X')
+    this.debugFolder
+      .add(this.camera.rotation, 'y')
+      .step(0.01)
+      .min(0)
+      .max(20)
+      .name('Rotation Y')
+    this.debugFolder
+      .add(this.camera.rotation, 'z')
+      .step(0.01)
+      .min(0)
+      .max(20)
+      .name('Rotation Z')
   }
 }

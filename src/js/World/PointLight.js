@@ -8,9 +8,9 @@ export default class PointLight {
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      positionX: -3.8,
-      positionY: 1.6,
-      positionZ: 6.5,
+      positionX: -1.5,
+      positionY: 3.6,
+      positionZ: 3.5,
     }
 
     this.createPointLight()
@@ -20,7 +20,10 @@ export default class PointLight {
     }
   }
   createPointLight() {
-    this.light = new THREE.PointLight(0xffffff, 2, 15, 2)
+    this.light = new THREE.PointLight(0xffffff, 0.2, 10)
+    this.light.castShadow = true
+    this.light.shadow.mapSize.width = 2048
+    this.light.shadow.mapSize.height = 2048
     this.light.position.set(
       this.params.positionX,
       this.params.positionY,

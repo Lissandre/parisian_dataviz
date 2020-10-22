@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export default class SpotLight {
+export default class PointLight {
   constructor(_options) {
     // Set options
     this.debug = _options.debug
@@ -8,22 +8,19 @@ export default class SpotLight {
     // Set up
     this.container = new THREE.Object3D()
     this.params = {
-      positionX: -29.5,
-      positionY: 18.8,
-      positionZ: 2.2,
+      positionX: -1.5,
+      positionY: 1.2,
+      positionZ: 5.9,
     }
 
-    this.createSpotLight()
+    this.createPointLight()
 
     if (this.debug) {
       this.setDebug()
     }
   }
-  createSpotLight() {
-    this.light = new THREE.PointLight(0xffffff, 1, 40)
-    this.light.castShadow = true
-    this.light.shadow.mapSize.width = 5000
-    this.light.shadow.mapSize.height = 5000
+  createPointLight() {
+    this.light = new THREE.DirectionalLight(0xffffff, 0.5)
     this.light.position.set(
       this.params.positionX,
       this.params.positionY,
@@ -33,13 +30,13 @@ export default class SpotLight {
   }
   setDebug() {
     // Color debug
-    this.debugFolder = this.debug.addFolder('Spot Light')
+    this.debugFolder = this.debug.addFolder('Directional Light')
     this.debugFolder.open()
     // Position debug
     this.debugFolder
       .add(this.params, 'positionX')
       .step(0.1)
-      .min(-50)
+      .min(-10)
       .max(10)
       .name('Position X')
       .onChange(() => {
@@ -49,7 +46,7 @@ export default class SpotLight {
       .add(this.params, 'positionY')
       .step(0.1)
       .min(-10)
-      .max(50)
+      .max(10)
       .name('Position Y')
       .onChange(() => {
         this.light.position.y = this.params.positionY

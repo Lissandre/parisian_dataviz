@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export default class Floor {
+export default class Wall {
   constructor(_options) {
     // Set options
     this.debug = _options.debug
@@ -9,9 +9,9 @@ export default class Floor {
     // Set up
     this.container = new THREE.Object3D()
 
-    this.setFloor()
+    this.setWall()
   }
-  setFloor() {
+  setWall() {
     // this.floor = new THREE.Mesh(
     //   new THREE.PlaneBufferGeometry(50, 20),
     //   new THREE.ShadowMaterial({
@@ -19,16 +19,14 @@ export default class Floor {
     //     transparent: true,
     //   })
     // )
-    this.floor = new THREE.Mesh(
-      new THREE.PlaneBufferGeometry(50, 50),
+    this.wall = new THREE.Mesh(
+      new THREE.PlaneBufferGeometry(70, 70),
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color('#ffa4dc'),
-        roughness: 0.2,
-        metalness: 0
+        color: new THREE.Color('#ffa4dc')
       })
     )
-    this.floor.receiveShadow = true
-    this.floor.rotation.x = -Math.PI / 2.5
-    this.container.add(this.floor)
+    this.wall.position.z = -8
+    this.wall.receiveShadow = true
+    this.container.add(this.wall)
   }
 }
