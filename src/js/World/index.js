@@ -66,6 +66,7 @@ export default class World {
       sizes: this.sizes,
       mouse: this.mouse,
       camera: this.camera,
+      data: this.data
     })
     this.container.add(this.human.container)
   }

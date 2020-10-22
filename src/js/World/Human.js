@@ -12,6 +12,7 @@ export default class Human {
     this.sizes = _options.sizes
     this.mouse = _options.mouse
     this.camera = _options.camera
+    this.data = _options.data
 
     // Set up
     this.rotation = 0
@@ -19,10 +20,12 @@ export default class Human {
     this.deceleration = 0.05
     this.container = new THREE.Object3D()
     this.loader = new GLTFLoader()
+    this.fontloader = new THREE.FontLoader()
     this.textureloader = new THREE.TextureLoader()
 
     this.loadModel()
     this.setMovement()
+    // this.setInfos()
   }
   loadModel() {
     this.loader.load(HumanModel, (model) => {
@@ -82,12 +85,26 @@ export default class Human {
       x: 0,
     })
   }
-  setHand() {
-    this.hand = new ActionPoint({
-      name: 'hand',
+  setInfos() {
+    // this.setRevenus()
+    // this.setPopulation()
+    // this.setPolitique()
+    // this.setProfessionnel()
+    // this.setProprete()
+    // this.setPollution()
+    // this.setSonore()
+    // this.setStup()
+    // this.setAmour()
+    // this.setAlcoolisme()
+    // this.setHashtag()
+    // this.setHappiness()
+  }
+  setRevenus(){
+    this.revenus = new ActionPoint({
+      name: 'revenus',
       position: {
-        x: 0.13,
-        y: 0.1,
+        x: 1,
+        y: 1,
         z: 0,
       },
       camera: this.camera,
@@ -96,24 +113,40 @@ export default class Human {
       sizes: this.sizes,
       childrenValue: 2,
     })
-    this.container.add(this.hand.container)
+    this.container.add(this.revenus.container)
   }
-  setFoot() {
-    this.foot = new ActionPoint({
-      name: 'foot',
-      position: {
-        x: 1.55,
-        y: 2.77,
-        z: 0,
-      },
-      camera: this.camera,
-      time: this.time,
-      model: this.container,
-      sizes: this.sizes,
-      childrenValue: 1,
-    })
-    this.container.add(this.foot.container)
-  }
+  // setHand() {
+  //   this.hand = new ActionPoint({
+  //     name: 'hand',
+  //     position: {
+  //       x: 0.13,
+  //       y: 0.1,
+  //       z: 0,
+  //     },
+  //     camera: this.camera,
+  //     time: this.time,
+  //     model: this.container,
+  //     sizes: this.sizes,
+  //     childrenValue: 2,
+  //   })
+  //   this.container.add(this.hand.container)
+  // }
+  // setFoot() {
+  //   this.foot = new ActionPoint({
+  //     name: 'foot',
+  //     position: {
+  //       x: 1.55,
+  //       y: 2.77,
+  //       z: 0,
+  //     },
+  //     camera: this.camera,
+  //     time: this.time,
+  //     model: this.container,
+  //     sizes: this.sizes,
+  //     childrenValue: 1,
+  //   })
+  //   this.container.add(this.foot.container)
+  // }
   toRadians(angle) {
     return angle * (Math.PI / 180)
   }

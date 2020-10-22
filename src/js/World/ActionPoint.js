@@ -19,7 +19,7 @@ export default class ActionPoint {
   }
   createPoint() {
     this.sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(0.1, 10, 10),
+      new THREE.SphereGeometry(1, 10, 10),
       new THREE.MeshStandardMaterial({ color: 0xff0000 })
     )
     this.container.position.x = this.position.x
@@ -32,7 +32,7 @@ export default class ActionPoint {
     this.button.classList.add('ball')
     this.button.classList.add(this.name)
     document.body.append(this.button)
-    this.moveButton()
+    // this.moveButton()
   }
   moveButton() {
     this.time.on('tick', () => {
