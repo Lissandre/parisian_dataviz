@@ -3,7 +3,7 @@ import { TweenMax } from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import texture from '../../textures/images.jpeg'
-import HumanModel from '../../models/personnage(1).glb'
+import HumanModel from '../../models/personnage-processed.glb'
 import ActionPoint from './ActionPoint.js'
 
 export default class Human {
@@ -31,7 +31,7 @@ export default class Human {
   setLoader() {
     // Draco
     this.dracoLoader = new DRACOLoader()
-    this.dracoLoader.setDecoderPath('draco/')
+    this.dracoLoader.setDecoderPath('./static/draco/')
     this.dracoLoader.setDecoderConfig({ type: 'js' })
     // GLTF
     this.gltfLoader = new GLTFLoader()
