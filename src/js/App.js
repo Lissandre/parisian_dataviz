@@ -28,7 +28,8 @@ export default class App {
   }
   setStartScreen() {
     document.querySelector('.startScreen button').addEventListener('click', () => {
-      document.querySelector('.startScreen').remove()
+      document.querySelector('.startScreen').style.zIndex = '0'
+      document.querySelector('canvas').style.transform = 'translateY(0)'
     })
   }
   setRenderer() {
