@@ -51,7 +51,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(fbx|glb|obj|3ds|gltf)$/,
+        test: /\.(fbx|glb|obj|3ds|gltf|drc)$/,
         use: [
           {
             loader: 'file-loader',

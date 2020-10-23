@@ -22,7 +22,7 @@ export default class Wall {
     this.wall = new THREE.Mesh(
       new THREE.PlaneBufferGeometry(70, 70),
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color('#ffa4dc')
+        color: new THREE.Color('#ffa4dc'),
       })
     )
     this.wall.position.z = -8

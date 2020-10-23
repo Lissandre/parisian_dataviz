@@ -1,4 +1,3 @@
-import { TweenMax } from 'gsap'
 import SceneColor from './SceneColor.js'
 
 export default class ChangeDistrict {
@@ -14,7 +13,7 @@ export default class ChangeDistrict {
     this.sceneColor = new SceneColor({
       districts: this.districts,
       floor: this.floor,
-      wall: this.wall
+      wall: this.wall,
     })
 
     this.selectDistrict()

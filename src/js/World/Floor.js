@@ -24,7 +24,7 @@ export default class Floor {
       new THREE.MeshStandardMaterial({
         color: new THREE.Color('#ffa4dc'),
         roughness: 0.2,
-        metalness: 0
+        metalness: 0,
       })
     )
     this.floor.receiveShadow = true

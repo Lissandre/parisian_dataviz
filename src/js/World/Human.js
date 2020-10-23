@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { TweenMax } from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import texture from '../../textures/images.jpeg'
 import HumanModel from '../../models/personnage(1).glb'
 import ActionPoint from './ActionPoint.js'
@@ -19,22 +20,33 @@ export default class Human {
     this.speed = 0
     this.deceleration = 0.05
     this.container = new THREE.Object3D()
-    this.loader = new GLTFLoader()
-    this.fontloader = new THREE.FontLoader()
+    // this.loader = new GLTFLoader()
     this.textureloader = new THREE.TextureLoader()
 
     this.setInfos()
+    this.setLoader()
     this.loadModel()
     this.setMovement()
   }
+  setLoader() {
+    // Draco
+    this.dracoLoader = new DRACOLoader()
+    this.dracoLoader.setDecoderPath('draco/')
+    this.dracoLoader.setDecoderConfig({ type: 'js' })
+    // GLTF
+    this.gltfLoader = new GLTFLoader()
+    this.gltfLoader.setDRACOLoader(this.dracoLoader)
+  }
   loadModel() {
-    this.loader.load(HumanModel, (model) => {
+    this.gltfLoader.load(HumanModel, (model) => {
       model.scene.traverse((child) => {
         child.castShadow = true
       })
-      model.scene.traverse(( child ) => {
-        if ( child.name === 'veste') {
-          child.material = new THREE.MeshBasicMaterial({map: this.textureloader.load(texture)})
+      model.scene.traverse((child) => {
+        if (child.name === 'veste') {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.textureloader.load(texture),
+          })
           child.material.map.wrapT = THREE.RepeatWrapping
           child.material.map.wrapS = THREE.RepeatWrapping
           child.material.side = THREE.DoubleSide
@@ -58,12 +70,7 @@ export default class Human {
           : (this.speed = 0)
       }
       this.deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
-        new THREE.Euler(
-          0,
-          this.toRadians(this.speed),
-          0,
-          'XYZ'
-        )
+        new THREE.Euler(0, this.toRadians(this.speed), 0, 'XYZ')
       )
       this.container.quaternion.multiplyQuaternions(
         this.deltaRotationQuaternion,
@@ -71,12 +78,12 @@ export default class Human {
       )
     })
   }
-  change(){
+  change() {
     TweenMax.to(this.container.position, {
       duration: 0.57,
       x: 7,
     })
-    setTimeout(()=>{
+    setTimeout(() => {
       this.container.position.x = -9
     }, 600)
     TweenMax.to(this.container.position, {
@@ -99,7 +106,7 @@ export default class Human {
     this.setHashtag()
     this.setHappiness()
   }
-  setRevenus(){
+  setRevenus() {
     this.revenus = new ActionPoint({
       name: 'revenus',
       position: {
@@ -115,7 +122,7 @@ export default class Human {
     })
     // this.container.add(this.revenus.container.children[0])
   }
-  setPopulation(){
+  setPopulation() {
     this.population = new ActionPoint({
       name: 'population',
       position: {
@@ -131,7 +138,7 @@ export default class Human {
     })
     // this.container.add(this.population.container)
   }
-  setPolitique(){
+  setPolitique() {
     this.politique = new ActionPoint({
       name: 'politique',
       position: {
@@ -147,7 +154,7 @@ export default class Human {
     })
     // this.container.add(this.politique.container)
   }
-  setProfessionnel(){
+  setProfessionnel() {
     this.professionnel = new ActionPoint({
       name: 'professionnel',
       position: {
@@ -163,7 +170,7 @@ export default class Human {
     })
     // this.container.add(this.professionnel.container)
   }
-  setProprete(){
+  setProprete() {
     this.proprete = new ActionPoint({
       name: 'proprete',
       position: {
@@ -179,7 +186,7 @@ export default class Human {
     })
     // this.container.add(this.proprete.container)
   }
-  setPollution(){
+  setPollution() {
     this.pollution = new ActionPoint({
       name: 'pollution',
       position: {
@@ -195,7 +202,7 @@ export default class Human {
     })
     // this.container.add(this.pollution.container)
   }
-  setSonore(){
+  setSonore() {
     this.sonore = new ActionPoint({
       name: 'sonore',
       position: {
@@ -211,7 +218,7 @@ export default class Human {
     })
     // this.container.add(this.sonore.container)
   }
-  setStup(){
+  setStup() {
     this.stup = new ActionPoint({
       name: 'stup',
       position: {
@@ -227,7 +234,7 @@ export default class Human {
     })
     // this.container.add(this.stup.container)
   }
-  setAmour(){
+  setAmour() {
     this.amour = new ActionPoint({
       name: 'amour',
       position: {
@@ -243,7 +250,7 @@ export default class Human {
     })
     // this.container.add(this.amour.container)
   }
-  setAlcoolisme(){
+  setAlcoolisme() {
     this.alcoolisme = new ActionPoint({
       name: 'alcoolisme',
       position: {
@@ -259,7 +266,7 @@ export default class Human {
     })
     // this.container.add(this.alcoolisme.container)
   }
-  setHashtag(){
+  setHashtag() {
     this.hashtag = new ActionPoint({
       name: 'hashtag',
       position: {
@@ -275,7 +282,7 @@ export default class Human {
     })
     // this.container.add(this.hashtag.container)
   }
-  setHappiness(){
+  setHappiness() {
     this.happiness = new ActionPoint({
       name: 'happiness',
       position: {

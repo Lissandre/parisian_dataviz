@@ -27,10 +27,12 @@ export default class App {
     this.setWorld()
   }
   setStartScreen() {
-    document.querySelector('.startScreen button').addEventListener('click', () => {
-      document.querySelector('.startScreen').style.zIndex = '0'
-      document.querySelector('canvas').style.transform = 'translateY(0)'
-    })
+    document
+      .querySelector('.startScreen button')
+      .addEventListener('click', () => {
+        document.querySelector('.startScreen').style.zIndex = '0'
+        document.querySelector('canvas').style.transform = 'translateY(0)'
+      })
   }
   setRenderer() {
     // Set scene

@@ -32,9 +32,9 @@ export default class ActionPoint {
     this.button.classList.add('ball')
     this.button.classList.add(this.name)
     document.body.append(this.button)
-    this.button.addEventListener('click', ()=>{
-      this.infos.forEach(info => {
-        if(info.classList.contains(this.name)){
+    this.button.addEventListener('click', () => {
+      this.infos.forEach((info) => {
+        if (info.classList.contains(this.name)) {
           info.classList.toggle('disp')
         }
       })

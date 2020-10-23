@@ -1,5 +1,5 @@
 import { TweenMax } from 'gsap'
-import * as THREE from 'three'
+
 export default class SceneColor {
   constructor(_options) {
     // Set options
@@ -63,17 +63,20 @@ export default class SceneColor {
     this.hexToRGB(this.backgroundColor[district])
     TweenMax.to(this.floor.container.children[0].material.color, {
       duration: 1.5,
-      r: this.r/255,
-      g: this.g/255,
-      b: this.b/255,
+      r: this.r / 255,
+      g: this.g / 255,
+      b: this.b / 255,
     })
     TweenMax.to(this.wall.container.children[0].material.color, {
       duration: 1.5,
-      r: this.r/255,
-      g: this.g/255,
-      b: this.b/255,
+      r: this.r / 255,
+      g: this.g / 255,
+      b: this.b / 255,
     })
-    document.documentElement.style.setProperty('--color', `${this.backgroundColor[district]}`)
+    document.documentElement.style.setProperty(
+      '--color',
+      `${this.backgroundColor[district]}`
+    )
     //this.renderer.setClearColor(new THREE.Color(this.backgroundColor[district]))
     //this.fog.color = new THREE.Color(this.backgroundColor[district])
   }
@@ -91,15 +94,15 @@ export default class SceneColor {
     this.b = 0
     // 3 digits
     if (h.length === 4) {
-      this.r = "0x" + h[1] + h[1];
-      this.g = "0x" + h[2] + h[2];
-      this.b = "0x" + h[3] + h[3];
-  
-    // 6 digits
+      this.r = '0x' + h[1] + h[1]
+      this.g = '0x' + h[2] + h[2]
+      this.b = '0x' + h[3] + h[3]
+
+      // 6 digits
     } else if (h.length === 7) {
-      this.r = "0x" + h[1] + h[2];
-      this.g = "0x" + h[3] + h[4];
-      this.b = "0x" + h[5] + h[6];
+      this.r = '0x' + h[1] + h[2]
+      this.g = '0x' + h[3] + h[4]
+      this.b = '0x' + h[5] + h[6]
     }
   }
 }

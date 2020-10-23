@@ -66,7 +66,7 @@ export default class World {
       sizes: this.sizes,
       mouse: this.mouse,
       camera: this.camera,
-      data: this.data
+      data: this.data,
     })
     this.container.add(this.human.container)
   }
@@ -87,7 +87,7 @@ export default class World {
   setDistrictInformations() {
     this.infos = new DistrictInformations({
       data: this.data,
-      human: this.human
+      human: this.human,
     })
   }
   setChangeDistrict() {
@@ -95,7 +95,7 @@ export default class World {
       floor: this.floor,
       wall: this.wall,
       human: this.human,
-      infos: this.infos
+      infos: this.infos,
     })
     this.changeDistrict.changeActive(0)
   }
