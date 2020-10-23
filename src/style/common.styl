@@ -56,6 +56,8 @@ canvas
   left -13px
   cursor pointer
   z-index 1
+  will-change transform
+  opacity 0.4
   &:hover
     top -14px
     left -14px
@@ -69,15 +71,77 @@ canvas
 
 .listInfos
   position absolute
+  width 100%
+  height 100%
   top 0
   left 0
   z-index 2
+  pointer-events: none;
   & ul
     font-family 'SharpRegular'
     list-style none
-    & li span
-      font-family 'acumin-pro' sans-serif
-      color #ffffff
+    & li
+      display: none
+      &.disp
+        display: block
+      & span
+        display block
+        font-family 'acumin-pro' sans-serif
+        color #ffffff
+li.revenus
+  position absolute
+  top 20%
+  left 100px
+li.stup
+  position absolute
+  top 27%
+  left 100px
+li.politique
+  position absolute
+  top 34%
+  left 100px
+li.alcoolisme
+  position absolute
+  top 41%
+  left 100px
+li.proprete
+  position absolute
+  top 48%
+  left 100px
+li.happiness
+  position absolute
+  top 55%
+  left 100px
+li.sonore
+  position absolute
+  text-align right
+  top 20%
+  right 455px
+li.population
+  position absolute
+  text-align right
+  top 27%
+  right 455px
+li.amour
+  position absolute
+  text-align right
+  top 34%
+  right 455px
+li.professionnel
+  position absolute
+  text-align right
+  top 41%
+  right 455px
+li.hashtag
+  position absolute
+  text-align right
+  top 48%
+  right 455px
+li.pollution
+  position absolute
+  text-align right
+  top 55%
+  right 455px
 
 #paris
   padding 100px 50px

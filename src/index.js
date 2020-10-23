@@ -3,7 +3,5 @@ import App from './js/App.js'
 
 new App({
   canvas: document.querySelector('#_canvas'),
-})
-document.querySelector('.startScreen button').addEventListener('click', () => {
-  document.querySelector('.startScreen').remove()
+  // config: 'dev'
 })

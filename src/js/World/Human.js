@@ -23,9 +23,9 @@ export default class Human {
     this.fontloader = new THREE.FontLoader()
     this.textureloader = new THREE.TextureLoader()
 
+    this.setInfos()
     this.loadModel()
     this.setMovement()
-    // this.setInfos()
   }
   loadModel() {
     this.loader.load(HumanModel, (model) => {
@@ -40,11 +40,11 @@ export default class Human {
           child.material.side = THREE.DoubleSide
         }
       })
+      model.scene.scale.set(0.005, 0.005, 0.005)
+      model.scene.position.y = 2.4
+      model.scene.rotation.y = 0.1
+      model.scene.rotation.y = -Math.PI / 2
       this.container.add(model.scene)
-      this.container.position.y = 2.4
-      this.container.scale.set(0.005, 0.005, 0.005)
-      this.container.rotation.y = 0.1
-      this.container.rotation.y = -Math.PI / 2
     })
   }
   setMovement() {
@@ -74,10 +74,10 @@ export default class Human {
   change(){
     TweenMax.to(this.container.position, {
       duration: 0.57,
-      x: 5,
+      x: 7,
     })
     setTimeout(()=>{
-      this.container.position.x = -7
+      this.container.position.x = -9
     }, 600)
     TweenMax.to(this.container.position, {
       delay: 0.7,
@@ -86,26 +86,58 @@ export default class Human {
     })
   }
   setInfos() {
-    // this.setRevenus()
-    // this.setPopulation()
-    // this.setPolitique()
-    // this.setProfessionnel()
-    // this.setProprete()
-    // this.setPollution()
-    // this.setSonore()
-    // this.setStup()
-    // this.setAmour()
-    // this.setAlcoolisme()
-    // this.setHashtag()
-    // this.setHappiness()
+    this.setRevenus()
+    this.setPopulation()
+    this.setPolitique()
+    this.setProfessionnel()
+    this.setProprete()
+    this.setPollution()
+    this.setSonore()
+    this.setStup()
+    this.setAmour()
+    this.setAlcoolisme()
+    this.setHashtag()
+    this.setHappiness()
   }
   setRevenus(){
     this.revenus = new ActionPoint({
       name: 'revenus',
       position: {
-        x: 1,
-        y: 1,
-        z: 0,
+        x: 0.26,
+        y: 0.8,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 0,
+    })
+    // this.container.add(this.revenus.container.children[0])
+  }
+  setPopulation(){
+    this.population = new ActionPoint({
+      name: 'population',
+      position: {
+        x: 0.22,
+        y: 1.4,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 1,
+    })
+    // this.container.add(this.population.container)
+  }
+  setPolitique(){
+    this.politique = new ActionPoint({
+      name: 'politique',
+      position: {
+        x: 0.18,
+        y: 2,
+        z: -0.18,
       },
       camera: this.camera,
       time: this.time,
@@ -113,40 +145,152 @@ export default class Human {
       sizes: this.sizes,
       childrenValue: 2,
     })
-    this.container.add(this.revenus.container)
+    // this.container.add(this.politique.container)
   }
-  // setHand() {
-  //   this.hand = new ActionPoint({
-  //     name: 'hand',
-  //     position: {
-  //       x: 0.13,
-  //       y: 0.1,
-  //       z: 0,
-  //     },
-  //     camera: this.camera,
-  //     time: this.time,
-  //     model: this.container,
-  //     sizes: this.sizes,
-  //     childrenValue: 2,
-  //   })
-  //   this.container.add(this.hand.container)
-  // }
-  // setFoot() {
-  //   this.foot = new ActionPoint({
-  //     name: 'foot',
-  //     position: {
-  //       x: 1.55,
-  //       y: 2.77,
-  //       z: 0,
-  //     },
-  //     camera: this.camera,
-  //     time: this.time,
-  //     model: this.container,
-  //     sizes: this.sizes,
-  //     childrenValue: 1,
-  //   })
-  //   this.container.add(this.foot.container)
-  // }
+  setProfessionnel(){
+    this.professionnel = new ActionPoint({
+      name: 'professionnel',
+      position: {
+        x: -0.28,
+        y: 2,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 3,
+    })
+    // this.container.add(this.professionnel.container)
+  }
+  setProprete(){
+    this.proprete = new ActionPoint({
+      name: 'proprete',
+      position: {
+        x: -0.32,
+        y: 1.4,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 4,
+    })
+    // this.container.add(this.proprete.container)
+  }
+  setPollution(){
+    this.pollution = new ActionPoint({
+      name: 'pollution',
+      position: {
+        x: -0.36,
+        y: 0.8,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 5,
+    })
+    // this.container.add(this.pollution.container)
+  }
+  setSonore(){
+    this.sonore = new ActionPoint({
+      name: 'sonore',
+      position: {
+        x: -0.06,
+        y: 2.5,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 6,
+    })
+    // this.container.add(this.sonore.container)
+  }
+  setStup(){
+    this.stup = new ActionPoint({
+      name: 'stup',
+      position: {
+        x: -0.06,
+        y: 3.2,
+        z: -0.18,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 7,
+    })
+    // this.container.add(this.stup.container)
+  }
+  setAmour(){
+    this.amour = new ActionPoint({
+      name: 'amour',
+      position: {
+        x: 0.7,
+        y: 3,
+        z: -0.13,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 8,
+    })
+    // this.container.add(this.amour.container)
+  }
+  setAlcoolisme(){
+    this.alcoolisme = new ActionPoint({
+      name: 'alcoolisme',
+      position: {
+        x: 1.5,
+        y: 2.8,
+        z: -0.1,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 9,
+    })
+    // this.container.add(this.alcoolisme.container)
+  }
+  setHashtag(){
+    this.hashtag = new ActionPoint({
+      name: 'hashtag',
+      position: {
+        x: -1.6,
+        y: 2.8,
+        z: -0.1,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 10,
+    })
+    // this.container.add(this.hashtag.container)
+  }
+  setHappiness(){
+    this.happiness = new ActionPoint({
+      name: 'happiness',
+      position: {
+        x: -0.8,
+        y: 3,
+        z: -0.13,
+      },
+      camera: this.camera,
+      time: this.time,
+      model: this.container,
+      sizes: this.sizes,
+      childrenValue: 11,
+    })
+    // this.container.add(this.happiness.container)
+  }
   toRadians(angle) {
     return angle * (Math.PI / 180)
   }
