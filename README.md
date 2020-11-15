@@ -1,29 +1,4 @@
 # Parisian Dataviz
 
-## Features
-- eslint
-- prettier
-- babel
-- stylus
-- dat.GUI
-
-## Requirements
-You need to have <b>node.js</b> installed. 
-
-## Setup
-Install dependencies
-```sh
-$ npm install
-```
-
-## Development
-Run the local webpack-dev-server with hotreload and autocompile on [http://localhost:8080/](http://localhost:8080/)
-```sh
-$ npm run dev
-```
-
-## Deployment
-Build the current application
-```sh
-$ npm run build
-```
+School project at Gobelins.
+We had to do a dataviz on parisian life, so we decided to make the average parisian by district. We had 5 days to make it, and we decided to go on something in 3D. Not the best choice, but a very cool experience for me.
